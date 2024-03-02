@@ -46,7 +46,7 @@ export const DataTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {!!data && data.map((row: DemoData) => {
+                    {!!data && Array.isArray(data) && data.map((row: DemoData) => {
                         return (
                             <TableRow key={row.id}>
                                 {/* <TableCell>{row.id}</TableCell> */}
@@ -54,7 +54,6 @@ export const DataTable = () => {
                                 <TableCell>{new Date(row.updatedAt).toLocaleDateString()}</TableCell>
                                 <TableCell>{row.status}</TableCell>
                                 <TableCell><Link href={`/admin/blog/${row.id}/edit`}><BsPen /></Link></TableCell>
-
                             </TableRow>
                         )
                     })}
