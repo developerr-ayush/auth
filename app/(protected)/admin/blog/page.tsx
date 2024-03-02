@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const blog = () => {
+
     return (
         <div className=''>
             <div className="flex justify-between items-center">

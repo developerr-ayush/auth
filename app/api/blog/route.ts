@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { equal } from "assert";
 import { NextRequest, NextResponse } from "next/server";
@@ -5,19 +6,22 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   const p = req.nextUrl.searchParams.get("p");
   const pageSize = 10;
-  const page = parseInt(p ?? "1");
+  let page = parseInt(p ?? "1");
   const offset = (page - 1) * pageSize;
-
+  let session = await auth();
+  let query: any = {
+    orderBy: { updatedAt: "desc" },
+    take: pageSize,
+    skip: offset,
+  };
   try {
-    const blogs = await db.blog.findMany({
-      where: {
-        status: "published",
-      },
-      orderBy: { updatedAt: "desc" },
-      take: pageSize,
-      skip: offset,
-    });
-    console.log(blogs);
+    if (!session) {
+      query.where = { status: "published" };
+    } else {
+      query.take = 1000;
+    }
+
+    const blogs = await db.blog.findMany(query);
     if (blogs.length === 0) {
       return NextResponse.json({ error: "No Blogs Found" }, { status: 404 });
     }
