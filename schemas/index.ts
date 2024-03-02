@@ -15,3 +15,11 @@ export const RegisterSchema = z.object({
     message: "Password is required",
   }),
 });
+export const blogSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  date: z.date(),
+  author: z.string(),
+  status: z.union([z.literal("published"), z.literal("draft")]),
+});
