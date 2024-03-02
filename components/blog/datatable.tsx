@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
     Table,
@@ -22,7 +22,14 @@ interface DemoData {
     status: string;
 }
 export const DataTable = async () => {
-    const data = await showBlog();
+    const [data, setData] = useState(await showBlog())
+    useEffect(() => {
+        let getData = async () => {
+            let blogs = await showBlog();
+            setData(blogs)
+        }
+        getData()
+    }, [])
     return (
         <div>
             <Table>
