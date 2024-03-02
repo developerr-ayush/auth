@@ -36,12 +36,11 @@ const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false }
 
 export const UpdateForm = ({ id }: { id: string }) => {
     const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
     const [success, setSuccess] = useState<string | undefined>("")
     let [blog, setBlog] = useState<any>(null)
-
     const form = useForm<z.infer<typeof blogSchema>>({
         resolver: zodResolver(blogSchema),
         defaultValues: {
@@ -66,19 +65,21 @@ export const UpdateForm = ({ id }: { id: string }) => {
         })
     }
     useEffect(() => {
+        setIsLoading(true)
         let getData = async () => {
             let blog = await getBlogById(id);
-            setBlog(blog)
-            if (!!blog) {
+            if (blog) {
+                setIsLoading(false)
                 form.setValue("title", blog.title)
                 form.setValue("description", blog.content)
                 form.setValue("status", blog.status)
+                setBlog(blog)
             }
         }
         getData()
 
     }, [id])
-    return isLoading ? <p>Loading Data</p> : blog ? <p>No page found</p> : (
+    return isLoading ? <p>Loading...</p> : blog && (
         <div>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)}>

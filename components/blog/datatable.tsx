@@ -12,7 +12,7 @@ import {
 import { BsPen } from 'react-icons/bs'
 import Link from 'next/link'
 import { showBlog } from '@/actions/blog'
-interface DemoData {
+interface BlogData {
     id: string;
     title: string;
     content: string;
@@ -23,13 +23,18 @@ interface DemoData {
 }
 export const DataTable = () => {
     // const data = await showBlog()
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<BlogData[] | null>(null)
     useEffect(() => {
         let updateData = async () => {
-            let blog = await fetch("/api/blog", { cache: "no-cache" })
-            let data = await blog.json()
-            setData(data)
-            console.log(data)
+            try {
+
+                let blog = await fetch("/api/blog", { cache: "no-cache" })
+                let data: BlogData[] = await blog.json()
+                setData(data)
+            } catch (e) {
+
+                console.log(e)
+            }
         }
         updateData()
     }, [])
@@ -46,7 +51,7 @@ export const DataTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {!!data && data.map((row: DemoData) => {
+                    {!!data && data.map((row: BlogData) => {
                         return (
                             <TableRow key={row.id}>
                                 {/* <TableCell>{row.id}</TableCell> */}
@@ -54,7 +59,6 @@ export const DataTable = () => {
                                 <TableCell>{new Date(row.updatedAt).toLocaleDateString()}</TableCell>
                                 <TableCell>{row.status}</TableCell>
                                 <TableCell><Link href={`/admin/blog/${row.id}/edit`}><BsPen /></Link></TableCell>
-
                             </TableRow>
                         )
                     })}

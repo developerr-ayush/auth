@@ -11,7 +11,6 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
   const session = await auth();
   if (!session?.user) return { error: "Not Authorized" };
   // save blog to database
-  console.log(title, description, status);
   const blog = await db.blog.create({
     data: {
       title,
