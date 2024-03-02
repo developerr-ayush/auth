@@ -19,7 +19,7 @@ import { DataTable } from './datatable'
 
 export const BlogTable = () => {
     return (
-        <div className='w-full'>
+        <div className='w-full mt-5'>
             <div className="rounded-md border">
                 <DataTable />
             </div>

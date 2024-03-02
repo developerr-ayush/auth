@@ -27,7 +27,7 @@ export const DataTable = async () => {
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>ID</TableHead>
+                        {/* <TableHead>ID</TableHead> */}
                         <TableHead>Title</TableHead>
                         <TableHead>Date</TableHead>
                         <TableHead>Status</TableHead>
@@ -38,7 +38,7 @@ export const DataTable = async () => {
                     {!!data && data.map((row: DemoData) => {
                         return (
                             <TableRow key={row.id}>
-                                <TableCell>{row.id}</TableCell>
+                                {/* <TableCell>{row.id}</TableCell> */}
                                 <TableCell>{row.title}</TableCell>
                                 <TableCell>{new Date(row.updatedAt).toLocaleDateString()}</TableCell>
                                 <TableCell>{row.status}</TableCell>
