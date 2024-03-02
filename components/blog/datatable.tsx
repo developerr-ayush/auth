@@ -21,14 +21,17 @@ interface DemoData {
     authorId: string;
     status: string;
 }
-export const DataTable = async () => {
-    const [data, setData] = useState(await showBlog())
+export const DataTable = () => {
+    // const data = await showBlog()
+    const [data, setData] = useState(null)
     useEffect(() => {
-        let getData = async () => {
-            let blogs = await showBlog();
-            setData(blogs)
+        let updateData = async () => {
+            let blog = await fetch("/api/blog", { cache: "no-cache" })
+            let data = await blog.json()
+            setData(data)
+            console.log(data)
         }
-        getData()
+        updateData()
     }, [])
     return (
         <div>

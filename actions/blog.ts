@@ -48,7 +48,6 @@ export const updateBlog = async (
   return { success: "blog created" };
 };
 export const showBlog = async () => {
-  "use server";
   const blogs = await db.blog.findMany();
   return blogs;
 };
