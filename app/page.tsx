@@ -76,12 +76,12 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-sky-800">
       <div className="space-y-6 text-center">
         <h1 className={cn("text-6xl font-semibold text-white drop-shadow-md", font.className)}>
-          🔐 Auth
+          🔐 Admin pannel
         </h1>
         <p className="text-white tex-lg">A simple Authentication service</p>
         <div>
           <LoginButton>
-            <Button variant="secondary" size="lg">Sign in</Button>
+            <Button variant="secondary" size="lg">Go To Dashboard</Button>
           </LoginButton>
         </div>
       </div>
