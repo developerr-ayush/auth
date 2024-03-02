@@ -18,7 +18,7 @@ let sidebar = [
 ]
 export const Sidebar = () => {
     return (
-        <div className='sidebar h-screen w-[10rem] text-white bg-slate-950'>
+        <div className='sidebar h-screen w-[10rem] text-white bg-slate-950 sticky top-0'>
             <p className='text-xl text-center p-2'>sidebar</p>
             <nav className='p-3'>
                 <ul className='list-none p-0'>

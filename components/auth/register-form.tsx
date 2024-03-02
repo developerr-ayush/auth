@@ -15,10 +15,10 @@ import { useForm } from "react-hook-form"
 import { RegisterSchema } from "@/schemas"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { FormError } from "../form-error"
-import { FormSuccess } from "../form-success"
 import { useState, useTransition } from "react"
 import { register } from "@/actions/register"
+import { FormError } from "../form-error"
+import { FormSuccess } from "../form-success"
 
 export const RegisterForm = () => {
     const [isPending, startTransition] = useTransition();
