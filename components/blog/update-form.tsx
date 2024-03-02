@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useTransition } from 'react'
+import React, { useEffect, useState, useTransition } from 'react'
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
@@ -18,7 +18,7 @@ import dynamic from 'next/dynamic'
 import "easymde/dist/easymde.min.css";
 import { register } from 'module'
 import { auth } from '@/auth'
-import { createBlog } from '@/actions/blog'
+import { updateBlog, getBlogById } from '@/actions/blog'
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
 import { Checkbox } from '../ui/checkbox'
@@ -30,29 +30,32 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { useRouter } from 'next/navigation'
+import { db } from '@/lib/db'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false })
 
-export const CreateForm = () => {
+export const UpdateForm = ({ id }: { id: string }) => {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
     const [success, setSuccess] = useState<string | undefined>("")
+    let [blog, setBlog] = useState<any>(null)
+
     const form = useForm<z.infer<typeof blogSchema>>({
         resolver: zodResolver(blogSchema),
         defaultValues: {
-            title: "",
-            description: "",
-            status: "draft",
+            title: blog ? blog.title : "",
+            description: blog ? blog.content : "",
+            status: blog ? blog.status : "",
             date: new Date(Date.now()),
         }
     })
     const onSubmit = (values: z.infer<typeof blogSchema>) => {
-        console.log(values)
         setError("")
         setSuccess("")
         startTransition(() => {
-            createBlog(values).then((data) => {
+            updateBlog(values, id).then((data) => {
                 if (data.error) {
                     setError(data.error)
                 } else {
@@ -62,7 +65,20 @@ export const CreateForm = () => {
             })
         })
     }
-    return (
+    useEffect(() => {
+        let getData = async () => {
+            let blog = await getBlogById(id);
+            setBlog(blog)
+            if (!!blog) {
+                form.setValue("title", blog.title)
+                form.setValue("description", blog.content)
+                form.setValue("status", blog.status)
+            }
+        }
+        getData()
+
+    }, [id])
+    return isLoading ? <p>Loading Data</p> : blog ? <p>No page found</p> : (
         <div>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)}>
