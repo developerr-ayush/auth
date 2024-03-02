@@ -21,24 +21,25 @@ interface BlogData {
     authorId: string;
     status: string;
 }
+interface error {
+    error: string
+}
 export const DataTable = () => {
     // const data = await showBlog()
-    const [data, setData] = useState<BlogData[] | null>(null)
+    const [data, setData] = useState<BlogData[] | null | error>(null)
     useEffect(() => {
         let updateData = async () => {
             try {
-
                 let blog = await fetch("/api/blog", { cache: "no-cache" })
                 let data: BlogData[] = await blog.json()
                 setData(data)
             } catch (e) {
-
                 console.log(e)
             }
         }
         updateData()
     }, [])
-    return (
+    return (!!data && !('error' in data)) && (
         <div>
             <Table>
                 <TableHeader>
@@ -51,7 +52,7 @@ export const DataTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {!!data && data.map((row: BlogData) => {
+                    {data.map((row: BlogData) => {
                         return (
                             <TableRow key={row.id}>
                                 {/* <TableCell>{row.id}</TableCell> */}

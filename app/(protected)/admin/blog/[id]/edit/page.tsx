@@ -1,12 +1,15 @@
+"use client"
 import React, { FC } from 'react'
-import axios from 'axios'
 import { UpdateForm } from '@/components/blog/update-form'
+import { Button } from '@/components/ui/button'
+import { deleteBlog } from '@/actions/blog'
+import { useRouter } from 'next/router'
+import BlogHead from '@/components/blog/blog-head'
 
 const page = ({ params }: { params: { id: string } }) => {
-  console.log(params.id)
   return (
     <div>
-      <h3 className='text-2xl text-center'>Create a new blog</h3>
+      <BlogHead id={params.id} />
       <UpdateForm id={params.id} />
     </div>
   )

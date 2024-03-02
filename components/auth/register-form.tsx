@@ -19,10 +19,12 @@ import { useState, useTransition } from "react"
 import { register } from "@/actions/register"
 import { FormError } from "../form-error"
 import { FormSuccess } from "../form-success"
+import { useRouter } from "next/navigation"
 
 export const RegisterForm = () => {
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
+    let router = useRouter()
     const [success, setSuccess] = useState<string | undefined>("")
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
@@ -41,13 +43,15 @@ export const RegisterForm = () => {
                     setError(data.error)
                 } else {
                     setSuccess(data.success)
+                    router.push("/admin")
+
                 }
 
             })
         })
     }
     return (
-        <CardWrapper headerLabel="Please login to continue" backButtonHref="/auth/login" backButtonLabel="Already have an account?">
+        <CardWrapper headerLabel="Add new user" backButtonHref="/auth/login" backButtonLabel="Already have an account?">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-4">

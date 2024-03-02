@@ -34,6 +34,12 @@ export const updateBlog = async (
   const { title, description, status } = validatedFields.data;
   const session = await auth();
   if (!session?.user) return { error: "Not Authorized" };
+  let existingblog = await db.blog.findUnique({
+    where: { id },
+    include: { author: true },
+  });
+  if (session.user.email !== existingblog?.author.email)
+    return { error: "Not Authorized" };
   // save blog to database
   console.log(title, description, status);
   const blog = await db.blog.update({
@@ -57,5 +63,22 @@ export const getBlogById = async (id: string) => {
     return blog;
   } catch (error) {
     return null;
+  }
+};
+export const deleteBlog = async (id: string) => {
+  let session = await auth();
+  if (!session) return { error: "Not Authorized" };
+  if (!session?.user) return { error: "Not Authorized" };
+  let existingblog = await db.blog.findUnique({
+    where: { id },
+    include: { author: true },
+  });
+  if (session.user.email !== existingblog?.author.email)
+    return { error: "Not Authorized" };
+  try {
+    await db.blog.delete({ where: { id } });
+    return { success: "blog deleted" };
+  } catch (error) {
+    return { error: "something went wrong" };
   }
 };
