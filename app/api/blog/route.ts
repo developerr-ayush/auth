@@ -1,7 +1,5 @@
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { equal } from "assert";
-import { Questrial } from "next/font/google";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -12,6 +10,19 @@ export async function GET(req: NextRequest) {
   let session = await auth();
   let query: any = {
     orderBy: { updatedAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      createdAt: true,
+      updatedAt: true,
+      status: true,
+      banner:true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
     take: pageSize,
     skip: offset,
   };
@@ -20,10 +31,12 @@ export async function GET(req: NextRequest) {
       query.where = {
         status: "published",
       };
+    } else if (session?.user?.role === "SUPER_ADMIN") {
+      query.take = 1000;
     } else {
       query.take = 1000;
       query.where = {
-        author: { email: session?.user?.email },
+        author: { id: session?.user?.id },
       };
     }
 
