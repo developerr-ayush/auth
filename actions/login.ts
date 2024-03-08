@@ -29,17 +29,17 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
           return { error: "something went wrong" };
       }
     }
-    if (error instanceof Error) {
-      const { type, cause } = error as AuthError;
-      switch (type) {
-        case "CredentialsSignin":
-          return "Invalid credentials.";
-        case "CallbackRouteError":
-          return cause?.err?.toString();
-        default:
-          return "Something went wrong.";
-      }
-    }
+    // if (error instanceof Error) {
+    //   const { type, cause } = error as AuthError;
+    //   switch (type) {
+    //     case "CredentialsSignin":
+    //       return "Invalid credentials.";
+    //     case "CallbackRouteError":
+    //       return cause?.err?.toString();
+    //     default:
+    //       return "Something went wrong.";
+    //   }
+    // }
     throw error;
     return { error: "Something went wrong" };
   }
