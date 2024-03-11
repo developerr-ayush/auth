@@ -1,7 +1,19 @@
 "use client"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 import { BsPen, BsTrash } from "react-icons/bs"
+import { DeleteBlog } from "./delete-blog"
 export type Blogs = {
     id: string
     title: string
@@ -42,7 +54,7 @@ export const columns: ColumnDef<Blogs>[] = [
         accessorKey: "id",
         cell: ({ row }) => {
             return (
-                <Link href={`/blog/${row.getValue("id")}`}>
+                <Link href={`/admin/blog/${row.getValue("id")}`}>
                     <BsPen />
                 </Link>
             )
@@ -53,9 +65,7 @@ export const columns: ColumnDef<Blogs>[] = [
         accessorKey: "id",
         cell: ({ row }) => {
             return (
-                <Link href={`/blog/delete/${row.getValue("id")}`}>
-                    <BsTrash />
-                </Link>
+                <DeleteBlog id={row.getValue("id")} title={row.getValue("title")} />
             )
         }
     }
