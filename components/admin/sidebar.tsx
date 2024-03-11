@@ -6,7 +6,8 @@ import { BsNewspaper } from 'react-icons/bs'
 import { FaHamburger, FaUser, FaWrench } from 'react-icons/fa'
 import { IoIosPersonAdd } from "react-icons/io";
 import { IoPeopleSharp } from "react-icons/io5";
-import niruvanaLogo from "@/images/niruvana.svg"
+import logo from "@/images/logo/landscape-white.png"
+
 import { IoMdMenu } from "react-icons/io";
 import Image from 'next/image'
 import { IoIosLogOut } from "react-icons/io";
@@ -39,13 +40,13 @@ export const Sidebar = ({ user }: { user: User }) => {
         logout().then(() => { })
     }
     return (
-        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-[#744730] top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
+        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-[#1b1b1b] top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
             <button className="btn-hamburger p-1  absolute top-4 right-0 md:hidden" onClick={() => {
                 setOpen(!open)
             }}>
                 <IoMdMenu size={30} />
             </button>
-            <p className='text-xl text-center p-2'><Image width={300} src={niruvanaLogo} alt="niruvana logo" className="filter invert brightness-0" /></p>
+            <p className='text-xl text-center p-2'><Image width={300} src={logo} alt="ayva hub logo" className="filter invert brightness-0" /></p>
             <nav className='p-3'>
                 <ul className='list-none p-0'>
                     {sidebar.map((item) => (
