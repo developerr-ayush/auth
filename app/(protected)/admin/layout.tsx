@@ -1,11 +1,13 @@
+import { auth } from '@/auth'
 import { Sidebar } from '@/components/admin/sidebar'
 import React from 'react'
 
-const layout = ({ children }: { children: React.ReactNode }) => {
-    return (
+const layout = async ({ children }: { children: React.ReactNode }) => {
+    let session = await auth()
+    return (!!session && !!session.user) && (
         <div className="flex">
-            <Sidebar />
-            <div className="p-3 flex-1">
+            <Sidebar user={session.user} />
+            <div className="p-3 w-[calc(100%-3rem)] flex-1">
                 {children}
             </div>
         </div>

@@ -19,7 +19,7 @@ import { FormError } from "../form-error"
 import { FormSuccess } from "../form-success"
 import { login } from "@/actions/login"
 import { useState, useTransition } from "react"
-
+import { isRedirectError } from "next/dist/client/components/redirect"
 export const LoginForm = () => {
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
@@ -36,16 +36,17 @@ export const LoginForm = () => {
         setSuccess("")
         startTransition(() => {
             login(values).then((data) => {
-                if (data.error) {
-                    setError(data.error)
-                } else {
-                    setSuccess(data.success)
+                if (data) {
+                    setError(data.error || "")
+                    setSuccess(data.success || "")
                 }
+            }).catch(data => {
+                console.log(data)
             })
         })
     }
     return (
-        <CardWrapper headerLabel="Welcome Back" backButtonHref="/auth/register" backButtonLabel="Don't have an account?" >
+        <CardWrapper headerLabel="Edit User" backButtonHref="/auth/register" backButtonLabel="Don't have an account?" >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-4">

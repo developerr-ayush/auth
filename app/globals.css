@@ -77,3 +77,11 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.static-content ul {
+  padding-left: 2rem;
+  list-style: disc;
+}
+.static-content ol {
+  padding-left: 2rem;
+  list-style: decimal;
+}

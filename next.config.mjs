@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['rv8t40wdbibsan4t.public.blob.vercel-storage.com'],
+    domains: [
+      "rv8t40wdbibsan4t.public.blob.vercel-storage.com",
+      "qwbso9evg4hekygp.public.blob.vercel-storage.com",
+    ],
   },
   experimental: {
     serverActions: {

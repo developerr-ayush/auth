@@ -3,7 +3,10 @@ import { LoginSchema } from "@/schemas";
 import { signIn } from "@/auth";
 import * as z from "zod";
 import bcrypt from "bcryptjs";
-
+import {
+  isRedirectError,
+  redirect,
+} from "next/dist/client/components/redirect";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
 import { db } from "@/lib/db";
@@ -12,36 +15,21 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   if (!validatedFields.success) return { error: "Invalid Fields" };
 
   const { email, password } = validatedFields.data;
+  console.log("hello");
   try {
-    await signIn("credentials", {
+    let success = await signIn("credentials", {
       email,
       password,
       redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirect: false,
     });
-  } catch (error) {
-    console.log("error: ", error);
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Invalid Credentials" };
-          break;
-        default:
-          return { error: "something went wrong" };
-      }
+  } catch (err) {
+    if (isRedirectError(err)) {
+      console.error(err);
+      throw err;
     }
-    // if (error instanceof Error) {
-    //   const { type, cause } = error as AuthError;
-    //   switch (type) {
-    //     case "CredentialsSignin":
-    //       return "Invalid credentials.";
-    //     case "CallbackRouteError":
-    //       return cause?.err?.toString();
-    //     default:
-    //       return "Something went wrong.";
-    //   }
-    // }
-    throw error;
-    return { error: "Something went wrong" };
+    return { error: "Invalid Credentials" };
   }
-  return { success: "Email sent" };
+  redirect(DEFAULT_LOGIN_REDIRECT);
+  return { success: "Login Success" };
 };

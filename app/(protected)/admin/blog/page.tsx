@@ -6,7 +6,7 @@ import React from 'react'
 const blog = () => {
 
     return (
-        <div className=''>
+        <div className='w-full'>
             <div className="flex justify-between items-center">
 
                 <h3 className='text-2xl '>Here are all your blogs</h3>

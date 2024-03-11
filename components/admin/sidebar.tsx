@@ -4,17 +4,21 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { BsNewspaper } from 'react-icons/bs'
 import { FaHamburger, FaUser, FaWrench } from 'react-icons/fa'
+import { IoIosPersonAdd } from "react-icons/io";
+import { IoPeopleSharp } from "react-icons/io5";
 import niruvanaLogo from "@/images/niruvana.svg"
 import { IoMdMenu } from "react-icons/io";
 import Image from 'next/image'
+import { IoIosLogOut } from "react-icons/io";
 import { logout } from '@/actions/logout'
+import { User } from 'next-auth'
 let sidebar = [
-    {
-        id: 1,
-        name: "home",
-        icon: HomeIcon,
-        url: "/admin"
-    },
+    // {
+    //     id: 1,
+    //     name: "home",
+    //     icon: HomeIcon,
+    //     url: "/admin"
+    // },
     {
         id: 2,
         name: "blog",
@@ -24,18 +28,18 @@ let sidebar = [
     {
         id: 3,
         name: "add user",
-        icon: FaUser,
+        icon: IoIosPersonAdd,
         url: "/auth/register"
     },
 
 ]
-export const Sidebar = () => {
+export const Sidebar = ({ user }: { user: User }) => {
     const [open, setOpen] = useState(false)
     let handleLogout = () => {
         logout().then(() => { })
     }
     return (
-        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-[#744730] top-0 relative shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
+        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-[#744730] top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
             <button className="btn-hamburger p-1  absolute top-4 right-0 md:hidden" onClick={() => {
                 setOpen(!open)
             }}>
@@ -51,7 +55,11 @@ export const Sidebar = () => {
                         </li>
                     ))}
                     <li className='py-3 capitalize flex gap-2'>
-                        <FaUser className='h-6 w-6' />
+                        <IoPeopleSharp className='h-6 w-6' />
+                        <Link href="/admin/users">All User</Link>
+                    </li>
+                    <li className='py-3 capitalize flex gap-2'>
+                        <IoIosLogOut className='h-6 w-6' />
                         <button onClick={handleLogout}>Logout</button>
                     </li>
                 </ul>

@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
       createdAt: true,
       updatedAt: true,
       status: true,
-      banner:true,
+      banner: true,
       author: {
         select: {
           name: true,

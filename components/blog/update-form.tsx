@@ -133,7 +133,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
 
     }, [id])
     return isLoading ? <p>Loading...</p> : blog && (
-        <div>
+        <div className='static-content'>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)}>
 

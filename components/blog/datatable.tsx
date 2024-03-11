@@ -44,7 +44,7 @@ export const DataTable = () => {
     }, [])
     return (!!data && !('error' in data)) && (
         <div>
-            <Table>
+            <Table className='min-w-max'>
                 <TableHeader>
                     <TableRow>
                         {/* <TableHead>ID</TableHead> */}

@@ -92,7 +92,7 @@ export const CreateForm = () => {
         formData.append("path", "");
         formData.append("source", "default");
         formData.append("files[0]", file);
-        const result = await fetch(`/api/blog/upload?filename=${new Date().toLocaleDateString()}-${file.name}`, {
+        const result = await fetch(`/api/blog/upload?filename=blog-image.png`, {
             method: "POST",
             body: formData
         })
@@ -104,7 +104,8 @@ export const CreateForm = () => {
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
         setError("")
         setSuccess("")
-        console.log(values)
+        setPending(true)
+        // console.log(values)
         createBlog(values).then((data) => {
             if (data.error) {
                 setError(data.error)
@@ -112,10 +113,12 @@ export const CreateForm = () => {
                 setSuccess(data.success)
                 router.push('/admin/blog')
             }
+            setPending(false)
+
         })
     }
     return (
-        <div>
+        <div className='static-content'>
             <Form {...form} >
                 <form onSubmit={form.handleSubmit(onSubmit)} >
 

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LoginButton } from "@/components/auth/login-button";
+import niruvanaLogo from "@/images/niruvana.svg"
+
 import { createBlog } from "@/actions/blog";
 const font = Poppins({ subsets: ["latin"], weight: ["600"] });
 const blogs = [
@@ -73,10 +75,10 @@ export default function Home() {
   //   createBlog(updatedBlog);
   // }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-sky-800">
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-[#744730]">
       <div className="space-y-6 text-center">
         <h1 className={cn("text-6xl font-semibold text-white drop-shadow-md", font.className)}>
-          🔐 Admin pannel
+        <Image width={300} src={niruvanaLogo} alt="niruvana logo" className="filter invert brightness-0" />
         </h1>
         <p className="text-white tex-lg">A simple Authentication service</p>
         <div>
