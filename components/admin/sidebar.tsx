@@ -40,7 +40,7 @@ export const Sidebar = ({ user }: { user: User }) => {
         logout().then(() => { })
     }
     return (
-        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-[#1b1b1b] top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
+        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-primary top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
             <button className="btn-hamburger p-1  absolute top-4 right-0 md:hidden" onClick={() => {
                 setOpen(!open)
             }}>

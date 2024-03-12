@@ -6,6 +6,9 @@ import {
     flexRender,
     getCoreRowModel,
     useReactTable,
+    getSortedRowModel,
+    SortingState,
+    getPaginationRowModel,
 } from "@tanstack/react-table"
 import {
     Table,
@@ -16,6 +19,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { BsPen } from 'react-icons/bs'
+import { useToast } from '../ui/use-toast'
 import Link from 'next/link'
 
 interface DataTableProps<TData, TValue> {
@@ -43,11 +47,19 @@ export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
+    const [sorting, setSorting] = React.useState<SortingState>([])
+    let { toast } = useToast()
 
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        onSortingChange: setSorting,
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+        },
     })
     return (
         <div>

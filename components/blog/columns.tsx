@@ -1,5 +1,19 @@
 "use client"
 import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { MoreHorizontal } from "lucide-react"
+import { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
+import { BsPen, BsTrash } from "react-icons/bs"
+import { Button } from "../ui/button"
+import { useRouter } from 'next/navigation'
+import {
     AlertDialog,
     AlertDialogAction,
     AlertDialogCancel,
@@ -10,10 +24,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { ColumnDef } from "@tanstack/react-table"
-import Link from "next/link"
-import { BsPen, BsTrash } from "react-icons/bs"
-import { DeleteBlog } from "./delete-blog"
+import axios from "axios"
+import { useToast } from "../ui/use-toast"
 export type Blogs = {
     id: string
     title: string
@@ -50,23 +62,52 @@ export const columns: ColumnDef<Blogs>[] = [
         accessorKey: "author.name",
     },
     {
-        header: "Edit",
-        accessorKey: "id",
+        header: "Actions",
+        id: "actions",
         cell: ({ row }) => {
+            const handleDelete = () => {
+                let res = axios.delete(`/api/blog/${row.original.id}`, {
+                    method: "DELETE",
+                })
+                res.then(res => {
+                    alert("Blog Deleted Succesfullly")
+                    location.reload()
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
             return (
-                <Link href={`/admin/blog/${row.getValue("id")}`}>
-                    <BsPen />
-                </Link>
-            )
-        }
-    },
-    {
-        header: "Delete",
-        accessorKey: "id",
-        cell: ({ row }) => {
-            return (
-                <DeleteBlog id={row.getValue("id")} title={row.getValue("title")} />
-            )
+                <AlertDialog>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                                <span className="sr-only">Open menu</span>
+                                <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem><Link className="block w-full" href={`/admin/blog/${row.original.id}`}>Edit</Link></DropdownMenuItem>
+                            <DropdownMenuItem>
+                                <AlertDialogTrigger>Delete</AlertDialogTrigger>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Are you sure you want to delete this blog?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                {row.original.title}
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>)
         }
     }
+
 ]

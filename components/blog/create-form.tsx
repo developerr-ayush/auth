@@ -1,5 +1,5 @@
 "use client"
-import React, { useMemo, useRef, useState, useTransition } from 'react'
+import React, { useCallback, useMemo, useRef, useState, useTransition } from 'react'
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
@@ -31,18 +31,22 @@ import {
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { createBlog } from '@/actions/blog'
+import { useDropzone } from 'react-dropzone'
 import Image from 'next/image'
 export const CreateForm = () => {
     const router = useRouter()
     const [pending, setPending] = useState(false)
-
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
     const [success, setSuccess] = useState<string | undefined>("")
     const config = useMemo(() => ({
         readonly: false,
         buttons: ["bold", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
-
+        theme: 'dark',
+        style: {
+            background: 'hsl(var(--background))',
+            color: 'hsl(var(--foreground))',
+        },
         toolbarAdaptive: false,
         enableDragAndDropFileToEditor: true,
         uploader: {
@@ -84,10 +88,8 @@ export const CreateForm = () => {
             banner: ""
         }
     })
-    const handleBanner = async (e: any) => {
+    const handleUpload = async (file: File) => {
         setPending(true)
-
-        const file = e.target.files[0]
         const formData = new FormData();
         formData.append("path", "");
         formData.append("source", "default");
@@ -97,15 +99,17 @@ export const CreateForm = () => {
             body: formData
         })
         const newBlob = (await result.json()) as PutBlobResult;
-        form.setValue("banner", newBlob.url)
+        return newBlob
         setPending(false)
 
     }
+
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
+        let res = await handleUpload(acceptedFiles[0])
+        form.setValue("banner", res.url)
         setError("")
         setSuccess("")
         setPending(true)
-        // console.log(values)
         createBlog(values).then((data) => {
             if (data.error) {
                 setError(data.error)
@@ -117,6 +121,23 @@ export const CreateForm = () => {
 
         })
     }
+    // dropzone
+    const maxSize = 1048576; // 1 MB in bytes
+    const [selectedImage, setSelectedImage] = useState<string | null>(null); // Update the type of selectedImage
+    const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
+        accept: {
+            'image/jpeg': [],
+            'image/png': []
+        },
+        maxSize: maxSize,
+        multiple: false,
+        onDrop: acceptedFiles => {
+            setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
+        }
+    });
+    const isFileTooLarge = acceptedFiles.some(file => file.size > maxSize);
+
+
     return (
         <div className='static-content'>
             <Form {...form} >
@@ -155,13 +176,26 @@ export const CreateForm = () => {
                                 <FormItem>
                                     <FormLabel>Banner Image</FormLabel>
                                     <FormControl>
-                                        <Input disabled={isPending} placeholder="upload Image" type="file" accept="image/*" onChange={handleBanner} />
+                                        <div>
+                                            <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''} ${isDragReject ? 'reject' : ''}`}>
+                                                <input {...getInputProps()} />
+                                                <p>{isDragActive ? 'Drop the file here ...' : 'Drag and drop an image file here, or click to select file'}</p>
+                                                {isDragReject && <p>Only image files are allowed!</p>}
+                                                {isFileTooLarge && <p>The file is too large! Max file size is 1MB.</p>}
+                                            </div>
+                                            {selectedImage && (
+                                                <div>
+                                                    <h2>Preview:</h2>
+                                                    <Image src={selectedImage} alt="Selected" width={300} height={300} />
+                                                </div>
+                                            )}
+                                        </div>
                                     </FormControl>
 
-                                    {/* image preview  */}
+                                    {/* image preview
                                     {field.value &&
                                         <Image src={field.value} width={200} height={200} alt='banner-image' />}
-                                    <FormMessage />
+                                    <FormMessage /> */}
                                 </FormItem>
                             )}
                         />
