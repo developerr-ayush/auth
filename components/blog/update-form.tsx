@@ -14,6 +14,7 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useForm } from "react-hook-form"
 import { blogSchema } from '@/schemas'
+import { useDropzone } from 'react-dropzone'
 import dynamic from 'next/dynamic'
 import "easymde/dist/easymde.min.css";
 import { register } from 'module'
@@ -43,6 +44,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("")
     const [success, setSuccess] = useState<string | undefined>("")
+
     let [blog, setBlog] = useState<any>(null)
     const config = useMemo(() => ({
         readonly: false,
@@ -50,6 +52,11 @@ export const UpdateForm = ({ id }: { id: string }) => {
         buttons: ["bold", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
         toolbarAdaptive: false,
         enableDragAndDropFileToEditor: true,
+        theme: 'dark',
+        style: {
+            background: 'hsl(var(--background))',
+            color: 'hsl(var(--foreground))',
+        },
         uploader: {
             insertImageAsBase64URI: false,
             imagesExtensions: ['jpg', 'png', 'jpeg', 'gif'],
@@ -78,20 +85,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
             },
         }
     }), [])
-    const handleBanner = async (e: any) => {
-        setPending(true)
-        const file = e.target.files[0]
-        const formData = new FormData();
-        formData.append("file", file);
-        const result = await fetch(`/api/blog/upload?filename=${new Date().toLocaleDateString()}-${file.name}`, {
-            method: "POST",
-            body: file
-        })
-        const newBlob = (await result.json()) as PutBlobResult;
-        form.setValue("banner", newBlob.url)
-        setPending(false)
-
-    }
     const form = useForm<z.infer<typeof blogSchema>>({
         resolver: zodResolver(blogSchema),
         defaultValues: {
@@ -102,20 +95,64 @@ export const UpdateForm = ({ id }: { id: string }) => {
             date: new Date(Date.now()),
         }
     })
-    const onSubmit = (values: z.infer<typeof blogSchema>) => {
-        setError("")
-        setSuccess("")
-        startTransition(() => {
-            updateBlog(values, id).then((data) => {
-                if (data.error) {
-                    setError(data.error)
-                } else {
-                    setSuccess(data.success)
-                    router.push('/admin/blog')
-                }
-            })
+
+    const handleUpload = async (file: File) => {
+        const formData = new FormData();
+        formData.append("path", "");
+        formData.append("source", "default");
+        formData.append("files[0]", file);
+        const result = await fetch(`/api/blog/upload?filename=blog-image.png`, {
+            method: "POST",
+            body: formData
         })
+        const newBlob = (await result.json()) as PutBlobResult;
+        return newBlob
+
     }
+
+    const onSubmit = async (values: z.infer<typeof blogSchema>) => {
+        setPending(true)
+        try {
+            setError("")
+            setSuccess("")
+            let res = values.banner
+            if (acceptedFiles.length) {
+                let blog = await handleUpload(acceptedFiles[0])
+                res = blog.url
+            }
+            console.log(res)
+            startTransition(() => {
+                updateBlog({ ...values, banner: res }, id).then((data) => {
+                    if (data.error) {
+                        setError(data.error)
+                    } else {
+                        setSuccess(data.success)
+                        router.push('/admin/blog')
+                    }
+                    setPending(false)
+
+                })
+            })
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    // dropzone
+    const maxSize = 1048576; // 1 MB in bytes
+    const [selectedImage, setSelectedImage] = useState<string | null>(null); // Update the type of selectedImage
+    const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
+        accept: {
+            'image/jpeg': [],
+            'image/png': []
+        },
+        maxSize: maxSize,
+        multiple: false,
+        onDrop: acceptedFiles => {
+            setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
+        }
+    });
+    const isFileTooLarge = acceptedFiles.some(file => file.size > maxSize);
     useEffect(() => {
         setIsLoading(true)
         let getData = async () => {
@@ -126,6 +163,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                 form.setValue("description", blog.content)
                 form.setValue("status", blog.status)
                 form.setValue("banner", blog.banner)
+                console.log(blog)
                 setBlog(blog)
             }
         }
@@ -169,7 +207,20 @@ export const UpdateForm = ({ id }: { id: string }) => {
                                 <FormItem>
                                     <FormLabel>Banner Image</FormLabel>
                                     <FormControl>
-                                        <Input disabled={isPending} placeholder="upload Image" type="file" accept="image/*" onChange={handleBanner} />
+                                        <div>
+                                            <div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''} ${isDragReject ? 'reject' : ''}`}>
+                                                <input {...getInputProps()} />
+                                                <p>{isDragActive ? 'Drop the file here ...' : 'Drag and drop an image file here, or click to select file'}</p>
+                                                {isDragReject && <p>Only image files are allowed!</p>}
+                                                {isFileTooLarge && <p>The file is too large! Max file size is 1MB.</p>}
+                                            </div>
+                                            {selectedImage && (
+                                                <div>
+                                                    <h2>Preview:</h2>
+                                                    <Image src={selectedImage} alt="Selected" width={300} height={300} />
+                                                </div>
+                                            )}
+                                        </div>
                                     </FormControl>
                                     {field.value &&
                                         <Image src={field.value} width={200} height={200} alt='banner-image' />}

@@ -89,7 +89,6 @@ export const CreateForm = () => {
         }
     })
     const handleUpload = async (file: File) => {
-        setPending(true)
         const formData = new FormData();
         formData.append("path", "");
         formData.append("source", "default");
@@ -100,17 +99,16 @@ export const CreateForm = () => {
         })
         const newBlob = (await result.json()) as PutBlobResult;
         return newBlob
-        setPending(false)
 
     }
 
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
+        setPending(true)
         let res = await handleUpload(acceptedFiles[0])
-        form.setValue("banner", res.url)
         setError("")
         setSuccess("")
-        setPending(true)
-        createBlog(values).then((data) => {
+        console.log(res)
+        createBlog({ ...values, banner: res.url }).then((data) => {
             if (data.error) {
                 setError(data.error)
             } else {
@@ -118,7 +116,6 @@ export const CreateForm = () => {
                 router.push('/admin/blog')
             }
             setPending(false)
-
         })
     }
     // dropzone
@@ -192,10 +189,7 @@ export const CreateForm = () => {
                                         </div>
                                     </FormControl>
 
-                                    {/* image preview
-                                    {field.value &&
-                                        <Image src={field.value} width={200} height={200} alt='banner-image' />}
-                                    <FormMessage /> */}
+
                                 </FormItem>
                             )}
                         />
