@@ -78,7 +78,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                         const elm = j.createInside.element(tagName);
                         console.log(filename, resp)
                         setPending(false)
-                        elm.setAttribute('src', `${resp.baseurl}/${filename}`);
+                        elm.setAttribute('src', `${filename}`);
                         j.s.insertImage(elm as HTMLImageElement, null, j.o.imageDefaultWidth);
                     });
                 }
@@ -129,6 +129,9 @@ export const UpdateForm = ({ id }: { id: string }) => {
                         setSuccess(data.success)
                         router.push('/admin/blog')
                     }
+                    setPending(false)
+
+                }).catch(e => {
                     setPending(false)
 
                 })

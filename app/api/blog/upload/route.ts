@@ -1,44 +1,38 @@
-import { put } from "@vercel/blob";
-import { randomUUID } from "crypto";
-import { url } from "inspector";
-import { NextResponse } from "next/server";
-import { Formidable } from "formidable";
+import { writeFile } from "fs/promises";
+import { NextRequest, NextResponse } from "next/server";
+import { join } from "path";
 
-export async function POST(request: Request): Promise<NextResponse> {
-  const { searchParams } = new URL(request.url);
-  let date = new Date();
-  console.log("request.body", request.body);
-  const filename = searchParams.get("filename") || `${date.getTime()}.png`;
-  // return NextResponse.json(filename);
-  const form = await request.formData();
-  const file = form.get("files[0]") as File;
-  console.log(form, file);
-  if (filename && request.body) {
-    // ⚠️ The below code is for App Router Route Handlers only
-    const blob = await put(filename, file, {
-      access: "public",
-    });
-    let url = blob.url;
-    let fileName = url.split("/").pop();
-    let baseUrl = url.split("/").slice(0, -1).join("/");
+export async function POST(req: NextRequest) {
+  const data = await req.formData();
+  const file: File | null = data.get("files[0]") as unknown as File;
+  if (!file) {
     return NextResponse.json({
-      success: true,
-      time: date,
-      url: blob.url,
-      data: {
-        message: ["File uploaded successfully"],
-        baseurl: baseUrl,
-        files: [fileName],
-        isImage: [true],
-        code: 220,
-      },
+      success: false,
+      message: "File not found",
+      code: 404,
     });
-    // return NextResponse.json({ success: true, data: blob });
   }
-  return NextResponse.json("Invalid Request");
 
-  // Here's the code for Pages API Routes:
-  // const blob = await put(filename, request, {
-  //   access: 'public',
-  // });
+  const byte = await file.arrayBuffer();
+  const buffer = Buffer.from(byte);
+
+  const path = join("./", "public", Date.now().toString() + "_" + file.name);
+  await writeFile(path, buffer);
+
+  console.log(path, buffer, byte, file);
+  const updatedPath = path.split("\\").join("/").split("public");
+  const updatedPathString = updatedPath[1];
+  console.log(updatedPathString);
+  return NextResponse.json({
+    success: true,
+    time: Date.now(),
+    url: updatedPathString,
+    data: {
+      message: ["File uploaded successfully"],
+      baseurl: "",
+      files: [updatedPathString],
+      isImage: [true],
+      code: 220,
+    },
+  });
 }

@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
+  env: {
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "doiulb8cc",
+  },
   images: {
-    domains: [
-      "rv8t40wdbibsan4t.public.blob.vercel-storage.com",
-      "qwbso9evg4hekygp.public.blob.vercel-storage.com",
-    ],
+    domains: ["res.cloudinary.com"],
   },
   experimental: {
     serverActions: {

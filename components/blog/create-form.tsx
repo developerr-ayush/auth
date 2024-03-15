@@ -71,7 +71,7 @@ export const CreateForm = () => {
                         const elm = j.createInside.element(tagName);
                         console.log(filename, resp)
                         setPending(false)
-                        elm.setAttribute('src', `${resp.baseurl}/${filename}`);
+                        elm.setAttribute('src', `${filename}`);
                         j.s.insertImage(elm as HTMLImageElement, null, j.o.imageDefaultWidth);
                     });
                 }
@@ -93,17 +93,18 @@ export const CreateForm = () => {
         formData.append("path", "");
         formData.append("source", "default");
         formData.append("files[0]", file);
-        const result = await fetch(`/api/blog/upload?filename=blog-image.png`, {
+        const result = await fetch(`/api/blog/upload`, {
             method: "POST",
             body: formData
         })
+        console.log(result)
         const newBlob = (await result.json()) as PutBlobResult;
         return newBlob
 
     }
 
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
-        setPending(true)
+        // setPending(true)
         let res = await handleUpload(acceptedFiles[0])
         setError("")
         setSuccess("")
