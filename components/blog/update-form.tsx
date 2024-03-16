@@ -90,6 +90,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
         defaultValues: {
             title: blog ? blog.title : "",
             description: blog ? blog.content : "",
+            content: blog ? blog.content : "",
             status: blog ? blog.status : "",
             banner: blog ? blog.banner : "",
             date: new Date(Date.now()),
@@ -163,7 +164,10 @@ export const UpdateForm = ({ id }: { id: string }) => {
             if (blog) {
                 setIsLoading(false)
                 form.setValue("title", blog.title)
-                form.setValue("description", blog.content)
+                if (!!blog.description) {
+                    form.setValue("description", blog.description)
+                }
+                form.setValue("content", blog.content)
                 form.setValue("status", blog.status)
                 form.setValue("banner", blog.banner)
                 console.log(blog)
@@ -197,6 +201,19 @@ export const UpdateForm = ({ id }: { id: string }) => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={isPending}
+                                            {...field} placeholder="Blog Description" />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField control={form.control}
+                            name="content"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Content</FormLabel>
                                     <FormControl>
                                         <JoditEditor value={field.value} onChange={field.onChange} config={config}></JoditEditor>
                                     </FormControl>

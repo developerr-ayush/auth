@@ -17,12 +17,13 @@ export const RegisterSchema = z.object({
 });
 export const blogSchema = z.object({
   title: z.string().min(10, { message: "Title should be atleast 10 letters" }),
-  description: z
+  content: z
     .string()
     .min(20, { message: "Description should be atleast 30 letters" }),
   date: z.date(),
   author: z.string().optional(),
   banner: z.string(),
+  description: z.string().optional(),
   status: z
     .union([z.literal("draft"), z.literal("published"), z.literal("archived")])
     .optional(),

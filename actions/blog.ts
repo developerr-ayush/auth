@@ -13,7 +13,7 @@ cloudinary.config({
 export const createBlog = async (values: z.infer<typeof blogSchema>) => {
   const validatedFields = blogSchema.safeParse(values);
   if (!validatedFields.success) return { error: "Invalid Fields" };
-  const { title, description, status, banner } = validatedFields.data;
+  const { title, description, status, banner, content } = validatedFields.data;
   const session = await auth();
   // console.log(title, description, status, banner);
   if (!session?.user) return { error: "Not Authorized" };
@@ -21,7 +21,8 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
   const blog = await db.blog.create({
     data: {
       title,
-      content: description,
+      content,
+      description,
       status,
       banner,
       author: {

@@ -50,15 +50,16 @@ model Account {
 }
 
 model Blog {
-  id        String   @id @default(cuid())
-  title     String   @db.VarChar(255)
-  content   String   @db.Text
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
-  status    Status   @default(draft)
-  banner    String   @db.VarChar(1000)
+  id          String   @id @default(cuid())
+  title       String   @db.VarChar(255)
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  status      Status   @default(draft)
+  banner      String   @db.VarChar(1000)
+  description String?  @db.VarChar(500)
 }
 
 enum Status {

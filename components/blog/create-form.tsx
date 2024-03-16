@@ -83,6 +83,7 @@ export const CreateForm = () => {
         resolver: zodResolver(blogSchema),
         defaultValues: {
             title: "",
+            content: "",
             description: "",
             status: "draft",
             date: new Date(Date.now()),
@@ -161,6 +162,19 @@ export const CreateForm = () => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={isPending}
+                                            {...field} placeholder="Blog Description" />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField control={form.control}
+                            name="content"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Content</FormLabel>
                                     <FormControl>
                                         {/* SOME EDITOR */}
                                         <JoditEditor value={field.value} onChange={field.onChange} config={config}></JoditEditor>
