@@ -48,14 +48,14 @@ export const CreateForm = () => {
             color: 'hsl(var(--foreground))',
         },
         toolbarAdaptive: false,
-        enableDragAndDropFileToEditor: true,
+        enableDragAndDropFileToEditor: false,
         uploader: {
             insertImageAsBase64URI: false,
             imagesExtensions: ['jpg', 'png', 'jpeg', 'gif'],
             format: "json",
             url: "/api/blog/upload?filename=blog-image.png",
-
             prepareData: function (data: any) {
+                console.log(data)
                 setPending(true)
                 return data;
             },
@@ -68,6 +68,7 @@ export const CreateForm = () => {
                 if (resp.files && resp.files.length) {
                     const tagName = 'img';
                     resp.files.forEach((filename: string, index: number) => { //edetor insertimg function
+                        console.log(filename, resp)
                         const elm = j.createInside.element(tagName);
                         console.log(filename, resp)
                         setPending(false)
