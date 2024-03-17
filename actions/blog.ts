@@ -15,7 +15,6 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
   if (!validatedFields.success) return { error: "Invalid Fields" };
   const { title, description, status, banner, content } = validatedFields.data;
   const session = await auth();
-  // console.log(title, description, status, banner);
   if (!session?.user) return { error: "Not Authorized" };
   // save blog to database
   const blog = await db.blog.create({
@@ -50,7 +49,6 @@ export const updateBlog = async (
   if (session.user.email !== existingblog?.author.email)
     return { error: "Not Authorized" };
   // save blog to database
-  // console.log(title, description, status);
   const blog = await db.blog.update({
     where: { id: id },
     data: {
@@ -70,7 +68,6 @@ export const showBlog = async () => {
 export const getBlogById = async (id: string) => {
   try {
     const blog = await db.blog.findUnique({ where: { id } });
-    // console.log(blog);
     return blog;
   } catch (error) {
     return null;

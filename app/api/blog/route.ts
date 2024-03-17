@@ -42,13 +42,11 @@ export async function GET(req: NextRequest) {
     }
 
     const blogs = await db.blog.findMany(query);
-    console.log(blogs);
     if (blogs.length === 0) {
       return NextResponse.json({ error: "No Blogs Found" }, { status: 404 });
     }
     return NextResponse.json(blogs);
   } catch (e) {
-    console.log(e);
     return NextResponse.json({ error: e }, { status: 404 });
   }
 }

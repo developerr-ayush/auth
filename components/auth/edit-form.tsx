@@ -41,7 +41,6 @@ export const LoginForm = () => {
                     setSuccess(data.success || "")
                 }
             }).catch(data => {
-                console.log(data)
             })
         })
     }

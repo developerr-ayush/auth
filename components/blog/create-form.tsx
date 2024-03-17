@@ -55,7 +55,6 @@ export const CreateForm = () => {
             format: "json",
             url: "/api/blog/upload?filename=blog-image.png",
             prepareData: function (data: any) {
-                console.log(data)
                 setPending(true)
                 return data;
             },
@@ -68,9 +67,7 @@ export const CreateForm = () => {
                 if (resp.files && resp.files.length) {
                     const tagName = 'img';
                     resp.files.forEach((filename: string, index: number) => { //edetor insertimg function
-                        console.log(filename, resp)
                         const elm = j.createInside.element(tagName);
-                        console.log(filename, resp)
                         setPending(false)
                         elm.setAttribute('src', `${filename}`);
                         j.s.insertImage(elm as HTMLImageElement, null, j.o.imageDefaultWidth);
@@ -99,17 +96,13 @@ export const CreateForm = () => {
             method: "POST",
             body: formData
         })
-        console.log(result)
         const newBlob = await result.json();
-        console.log(newBlob)
         return newBlob
 
     }
 
-    console.log(form.formState)
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
         setPending(true)
-        console.log(values)
         if (!acceptedFiles.length) {
             form.setError("banner", { message: "Banner is required" });
             return
@@ -117,7 +110,6 @@ export const CreateForm = () => {
         let res = await handleUpload(acceptedFiles[0])
         setError("")
         setSuccess("")
-        console.log(res)
         createBlog({ ...values, banner: res.url }).then((data) => {
             if (data.error) {
                 setError(data.error)

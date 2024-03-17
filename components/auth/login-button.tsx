@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 export const LoginButton = ({ children, mode = "redirect", asChild }: LoginButtonProps) => {
     const router = useRouter()
     const onClick = () => {
-        console.log("LoginButton clicked");
         router.push("/auth/login")
     }
     if (mode === "modal") {

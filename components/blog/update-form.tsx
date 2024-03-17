@@ -76,7 +76,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
                     const tagName = 'img';
                     resp.files.forEach((filename: string, index: number) => { //edetor insertimg function
                         const elm = j.createInside.element(tagName);
-                        console.log(filename, resp)
                         setPending(false)
                         elm.setAttribute('src', `${filename}`);
                         j.s.insertImage(elm as HTMLImageElement, null, j.o.imageDefaultWidth);
@@ -113,7 +112,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
 
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
         setPending(true)
-        console.log(values, acceptedFiles[0])
         try {
             setError("")
             setSuccess("")
@@ -122,7 +120,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
                 let blog = await handleUpload(acceptedFiles[0])
                 res = blog.url
             }
-            console.log(res)
             startTransition(() => {
                 updateBlog({ ...values, banner: res }, id).then((data) => {
                     if (data.error) {
@@ -140,7 +137,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
             })
 
         } catch (e) {
-            console.log(e)
         }
     }
     // dropzone
@@ -171,7 +167,6 @@ export const UpdateForm = ({ id }: { id: string }) => {
                 form.setValue("content", blog.content)
                 form.setValue("status", blog.status)
                 form.setValue("banner", blog.banner)
-                console.log(blog)
                 setBlog(blog)
             }
         }

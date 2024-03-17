@@ -73,7 +73,6 @@ export const columns: ColumnDef<Blogs>[] = [
                     alert("Blog Deleted Succesfullly")
                     location.reload()
                 }).catch(err => {
-                    console.log(err)
                 })
             }
             return (

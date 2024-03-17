@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
     ACL: "public-read", // Set ACL to public-read if you want the uploaded objects to be publicly accessible
   };
 
-  console.log(path, buffer, byte, file);
   try {
     const uploadResult = await s3.upload(uploadParams).promise();
     const updatedPathString = uploadResult.Location;
