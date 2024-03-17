@@ -40,7 +40,7 @@ export const updateBlog = async (
 ) => {
   const validatedFields = blogSchema.safeParse(values);
   if (!validatedFields.success) return { error: "Invalid Fields" };
-  const { title, description, status } = validatedFields.data;
+  const { title, description, status, content, banner } = validatedFields.data;
   const session = await auth();
   if (!session?.user) return { error: "Not Authorized" };
   let existingblog = await db.blog.findUnique({
@@ -55,8 +55,10 @@ export const updateBlog = async (
     where: { id: id },
     data: {
       title,
-      content: description,
+      content,
+      description,
       status,
+      banner,
     },
   });
   return { success: "blog created" };

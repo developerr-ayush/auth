@@ -113,6 +113,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
 
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
         setPending(true)
+        console.log(values, acceptedFiles[0])
         try {
             setError("")
             setSuccess("")

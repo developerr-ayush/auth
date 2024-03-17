@@ -100,13 +100,20 @@ export const CreateForm = () => {
             body: formData
         })
         console.log(result)
-        const newBlob = (await result.json()) as PutBlobResult;
+        const newBlob = await result.json();
+        console.log(newBlob)
         return newBlob
 
     }
 
+    console.log(form.formState)
     const onSubmit = async (values: z.infer<typeof blogSchema>) => {
-        // setPending(true)
+        setPending(true)
+        console.log(values)
+        if (!acceptedFiles.length) {
+            form.setError("banner", { message: "Banner is required" });
+            return
+        }
         let res = await handleUpload(acceptedFiles[0])
         setError("")
         setSuccess("")
@@ -204,6 +211,7 @@ export const CreateForm = () => {
                                             )}
                                         </div>
                                     </FormControl>
+                                    <FormMessage />
 
 
                                 </FormItem>
