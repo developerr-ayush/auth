@@ -26,6 +26,8 @@ import {
 } from "@/components/ui/alert-dialog"
 import axios from "axios"
 import { useToast } from "../ui/use-toast"
+import { auth } from "@/auth"
+
 export type Blogs = {
     id: string
     title: string
@@ -73,6 +75,7 @@ export const columns: ColumnDef<Blogs>[] = [
                     alert("Blog Deleted Succesfullly")
                     location.reload()
                 }).catch(err => {
+                    alert("Not Authorized")
                 })
             }
             return (

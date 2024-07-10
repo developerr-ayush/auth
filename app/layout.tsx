@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ayva hub",
+  title: "Ayva Hub",
   description: "Created By Ayush",
 };
 

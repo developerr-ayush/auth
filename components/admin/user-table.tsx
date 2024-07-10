@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table"
 import { Button } from '../ui/button'
 import { DeleteUser } from '../auth/delete-user'
+import { EditUser } from '../auth/edit-user'
 
 export const Usertable = ({ allUsers }: { allUsers: User[] }) => {
     return (
@@ -20,7 +21,7 @@ export const Usertable = ({ allUsers }: { allUsers: User[] }) => {
                         <TableHead>Name</TableHead>
                         <TableHead>Email</TableHead>
                         <TableHead>Role</TableHead>
-                        {/* <TableHead>Edit</TableHead> */}
+                        {/* <TableHead>Edit</TableHead>  */}
                         <TableHead>Delete</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -31,7 +32,7 @@ export const Usertable = ({ allUsers }: { allUsers: User[] }) => {
                                 <TableCell>{user.name}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>{user.role}</TableCell>
-                                {/* <TableCell><Button >Edit</Button></TableCell> */}
+                                {/* {user.id && <TableCell><EditUser id={user.id} /></TableCell>} */}
                                 {user.id && <TableCell><DeleteUser id={user.id} /></TableCell>}
                             </TableRow>
                         )

@@ -2,14 +2,19 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+// import data from "@/dummyData.json";
+
 export async function GET(req: NextRequest) {
   const p = req.nextUrl.searchParams.get("p");
-  const pageSize = 10;
+  const search = req.nextUrl.searchParams.get("search");
+  const trending = req.nextUrl.searchParams.get("trending");
+  const yearmonth = req.nextUrl.searchParams.get("yearmonth"); // 2022-01
+  const pageSize = 6;
   let page = parseInt(p ?? "1");
   const offset = (page - 1) * pageSize;
   let session = await auth();
   let query: any = {
-    orderBy: { updatedAt: "desc" },
+    orderBy: { createdAt: "desc" },
     select: {
       id: true,
       title: true,
@@ -18,6 +23,10 @@ export async function GET(req: NextRequest) {
       status: true,
       banner: true,
       description: true,
+      categories: true,
+      slug: true,
+      tags: true,
+      views: true,
       author: {
         select: {
           name: true,
@@ -27,20 +36,66 @@ export async function GET(req: NextRequest) {
     take: pageSize,
     skip: offset,
   };
-  try {
-    if (!session) {
-      query.where = {
-        status: "published",
-      };
-    } else if (session?.user?.role === "SUPER_ADMIN") {
-      query.take = 1000;
-    } else {
-      query.take = 1000;
-      query.where = {
-        author: { id: session?.user?.id },
-      };
-    }
+  if (search) {
+    query.where = {
+      OR: [
+        {
+          title: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          description: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          content: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+      ],
+    };
+  }
+  if (trending) {
+    query.orderBy = {
+      views: "desc",
+    };
+  }
+  if (yearmonth) {
+    query.where = {
+      AND: [
+        {
+          updatedAt: {
+            gte: new Date(`${yearmonth}-01`),
+          },
+        },
+        {
+          updatedAt: {
+            lt: new Date(`${yearmonth}-31`),
+          },
+        },
+      ],
+    };
+  }
+  if (!session) {
+    query.where = {
+      ...query.where,
+      status: "published",
+    };
+  } else if (session?.user?.role === "SUPER_ADMIN") {
+    query.take = 1000;
+  } else {
+    query.take = 1000;
+    // query.where = {
+    //   author: { id: session?.user?.id },
+    // };
+  }
 
+  try {
     const blogs = await db.blog.findMany(query);
     if (blogs.length === 0) {
       return NextResponse.json({ error: "No Blogs Found" }, { status: 404 });

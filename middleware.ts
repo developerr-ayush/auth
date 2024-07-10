@@ -27,7 +27,6 @@ export default auth((req: any) => {
   if (!isLoggedIn && !isPublicRoute) {
     return Response.redirect(new URL("/auth/login", nextUrl));
   }
-
   return;
 });
 export const config = {

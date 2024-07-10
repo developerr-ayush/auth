@@ -43,7 +43,7 @@ export const RegisterForm = () => {
                     setError(data.error)
                 } else {
                     setSuccess(data.success)
-                    router.push("/admin")
+                    router.push("/admin/blog")
 
                 }
 

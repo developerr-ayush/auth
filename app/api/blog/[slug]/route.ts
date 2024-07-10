@@ -3,10 +3,10 @@ import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-  let id = req.nextUrl.pathname.split("/").pop();
+  let slug = req.nextUrl.pathname.split("/").pop();
   try {
     let blog = await db.blog.findUnique({
-      where: { id },
+      where: { slug },
       include: {
         author: {
           select: {
@@ -15,9 +15,17 @@ export async function GET(req: NextRequest) {
         },
       },
     });
+
     if (!blog) {
       return NextResponse.json(new Error("Not Found"), { status: 404 });
     }
+    // update views count
+    await db.blog.update({
+      where: { slug },
+      data: {
+        views: blog.views + 1,
+      },
+    });
     return NextResponse.json(blog);
   } catch (error) {
     return NextResponse.json(error, { status: 404 });

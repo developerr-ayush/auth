@@ -2,11 +2,12 @@
 import { HomeIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { BsNewspaper } from 'react-icons/bs'
+import { BsBookmark, BsNewspaper } from 'react-icons/bs'
 import { FaHamburger, FaUser, FaWrench } from 'react-icons/fa'
 import { IoIosPersonAdd } from "react-icons/io";
 import { IoPeopleSharp } from "react-icons/io5";
-import logo from "@/images/logo/landscape-white.png"
+import logo from "@/images/logo/transparent-white.png"
+
 
 import { IoMdMenu } from "react-icons/io";
 import Image from 'next/image'
@@ -28,6 +29,18 @@ let sidebar = [
     },
     {
         id: 3,
+        name: "category",
+        icon: BsBookmark,
+        url: "/admin/blog/category"
+    },
+    // {
+    //     id: 4,
+    //     name: "archieve",
+    //     icon: BsBookmark,
+    //     url: "/admin/blog/archieve"
+    // },
+    {
+        id: 5,
         name: "add user",
         icon: IoIosPersonAdd,
         url: "/auth/register"
@@ -40,25 +53,25 @@ export const Sidebar = ({ user }: { user: User }) => {
         logout().then(() => { })
     }
     return (
-        <div className={`sidebar h-screen w-[12rem] pr-[2rem] text-white bg-primary top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
-            <button className="btn-hamburger p-1  absolute top-4 right-0 md:hidden" onClick={() => {
+        <div className={`sidebar h-screen w-[12rem] pr-[2rem]  bg-primary top-0 sticky shrink-0 transition-all md:ml-[0rem] ${!open ? "ml-[-9.5rem]" : ""}`} >
+            <button className="btn-hamburger text-white p-1  absolute top-4 right-0 md:hidden" onClick={() => {
                 setOpen(!open)
             }}>
                 <IoMdMenu size={30} />
             </button>
-            <p className='text-xl text-center p-2'><Image width={300} src={logo} alt="ayva hub logo" className="filter invert brightness-0" /></p>
+            <p className='text-xl text-center p-2'><Image width={300} src={logo} alt="schoolvr logo" className="filter invert brightness-0" /></p>
             <nav className='p-3'>
-                <ul className='list-none p-0'>
+                <ul className='list-none p-0 text-white'>
                     {sidebar.map((item) => (
                         <li key={item.id} className='py-3 capitalize flex gap-2'>
                             {item.icon && <item.icon className='h-6 w-6' />}
                             <Link href={item.url}>{item.name}</Link>
                         </li>
                     ))}
-                    <li className='py-3 capitalize flex gap-2'>
+                    {user.role === "SUPER_ADMIN" && <li className='py-3 capitalize flex gap-2'>
                         <IoPeopleSharp className='h-6 w-6' />
                         <Link href="/admin/users">All User</Link>
-                    </li>
+                    </li>}
                     <li className='py-3 capitalize flex gap-2'>
                         <IoIosLogOut className='h-6 w-6' />
                         <button onClick={handleLogout}>Logout</button>

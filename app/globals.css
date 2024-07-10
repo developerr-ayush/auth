@@ -7,16 +7,16 @@ body {
 }
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 0 0% 100%;
+    --background: 180 3% 22%;
+    --foreground: 0 0% 0%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0 100%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 180 3% 22%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -73,9 +73,9 @@ body {
   * {
     @apply border-border;
   }
-  body {
+  /* body {
     @apply bg-background text-foreground;
-  }
+  } */
 }
 .static-content ul {
   padding-left: 2rem;

@@ -5,7 +5,7 @@ const nextConfig = {
     NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "doiulb8cc",
   },
   images: {
-    domains: ["res.cloudinary.com", "ayva-hub.s3.amazonaws.com"],
+    domains: ["res.cloudinary.com", "aonix-admin.s3.ap-south-1.amazonaws.com"],
   },
   experimental: {
     serverActions: {

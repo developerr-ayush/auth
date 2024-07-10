@@ -15,6 +15,14 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   if (!validatedFields.success) return { error: "Invalid Fields" };
 
   const { email, password } = validatedFields.data;
+  // const user = await db.user.create({
+  //   data: {
+  //     name: "Ayush Shah",
+  //     email,
+  //     password: bcrypt.hashSync(password, 10),
+  //   },
+  // });
+  // return { success: "User created" };
   try {
     let success = await signIn("credentials", {
       email,

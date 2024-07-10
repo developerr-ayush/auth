@@ -1,0 +1,872 @@
+[
+  {
+    "id": "clv0danwg0003l72s3qhn0k02",
+    "title": "The Future of Fitness: Virtual Reality Workouts",
+    "createdAt": "2024-04-15T03:00:30.977Z",
+    "updatedAt": "2024-05-01T03:28:58.012Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_pexels-julia-m-cameron-4144292.jpg",
+    "description": "Dive into the future of fitness with virtual reality (VR) workouts, where immersive experiences redefine traditional exercise routines. Explore how VR technology is reshaping the fitness landscape, offering engaging and effective workout solutions for enthusiasts of all levels.",
+    "categories": [
+      {
+        "id": "cluzdx002000w31p7joi7a22q",
+        "name": "fitness",
+        "slug": "fitness",
+        "createdAt": "2024-04-14T10:30:06.914Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "clv0d8zo60000l72spuk5lign",
+        "name": "health",
+        "slug": "health",
+        "createdAt": "2024-04-15T02:59:12.918Z",
+        "updatedAt": "2024-04-19T15:22:14.865Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "the-future-of-fitness:-virtual-reality-workouts",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " fitness",
+      " exercise",
+      " technology",
+      " health",
+      " wellness",
+      " immersive experiences",
+      " workouts",
+      " innovation."
+    ],
+    "views": 42,
+    "author": { "name": "demo user" }
+  },
+  {
+    "id": "clv0bk0a20004a6dlezescd86",
+    "title": "Virtual Fitness: Revolutionizing Workouts with VR Technology",
+    "createdAt": "2024-04-15T02:11:47.690Z",
+    "updatedAt": "2024-04-28T13:49:03.692Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_rainbow-7679604_640.jpg",
+    "description": "Discover the exciting intersection of virtual reality (VR) and fitness, where immersive experiences are transforming traditional workouts into engaging and effective training sessions. Explore the innovative ways VR technology is reshaping the fitness industry and revolutionizing how people exercise.",
+    "categories": [
+      {
+        "id": "cluzdnaoe000o31p7ksymrhcn",
+        "name": "healthcare",
+        "slug": "healthcare",
+        "createdAt": "2024-04-14T10:22:34.191Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdx002000w31p7joi7a22q",
+        "name": "fitness",
+        "slug": "fitness",
+        "createdAt": "2024-04-14T10:30:06.914Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "virtual-fitness:-revolutionizing-workouts-with-vr-technology",
+    "tags": [
+      " vr",
+      " virtual reality",
+      " fitness",
+      " exercise",
+      " technology",
+      " health",
+      " wellness",
+      " immersive experiences",
+      " workouts",
+      " innovation."
+    ],
+    "views": 25,
+    "author": { "name": "demo user" }
+  },
+  {
+    "id": "clv0afca5000011lhybxpymwg",
+    "title": "Breaking Boundaries: How Virtual Reality Transformed Remote Collaboration at Acme Tech",
+    "createdAt": "2024-04-15T01:40:10.346Z",
+    "updatedAt": "2024-04-29T04:00:07.998Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_metaverse-7828306_640.jpg",
+    "description": "Explore the groundbreaking implementation of virtual reality (VR) technology at Acme Tech, revolutionizing remote collaboration and driving productivity to new heights. Discover the story behind Acme Tech's journey to harness the power of VR and the remarkable impact it had on their distributed teams",
+    "categories": [
+      {
+        "id": "cluzdfu7h000631p7tex3gvh0",
+        "name": "edutech",
+        "slug": "edutech",
+        "createdAt": "2024-04-14T10:16:46.253Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdnaoe000o31p7ksymrhcn",
+        "name": "healthcare",
+        "slug": "healthcare",
+        "createdAt": "2024-04-14T10:22:34.191Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "breaking-boundaries:-how-virtual-reality-transformed-remote-collaboration-at-acme-tech",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " case study",
+      " productivity",
+      " innovation",
+      " remote teams",
+      " acme tech."
+    ],
+    "views": 28,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzg3q0h001v31p72o2spmxt",
+    "title": "Transforming Remote Collaboration: A Case Study in Virtual Reality at XYZ Corporation",
+    "createdAt": "2024-04-14T11:31:19.793Z",
+    "updatedAt": "2024-04-27T03:18:11.790Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_pexels-julia-m-cameron-4144293.jpg",
+    "description": "Explore how XYZ Corporation leveraged virtual reality (VR) technology to revolutionize remote collaboration, driving productivity and innovation across distributed teams. Dive into the success story of XYZ Corporation's VR collaboration program and discover the transformative impact of immersive virtual meetings and collaborative workspaces.",
+    "categories": [
+      {
+        "id": "cluzdnaoe000o31p7ksymrhcn",
+        "name": "healthcare",
+        "slug": "healthcare",
+        "createdAt": "2024-04-14T10:22:34.191Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdq39r000s31p7yhpbc4my",
+        "name": "advertising",
+        "slug": "advertising",
+        "createdAt": "2024-04-14T10:24:44.559Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdx002000w31p7joi7a22q",
+        "name": "fitness",
+        "slug": "fitness",
+        "createdAt": "2024-04-14T10:30:06.914Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "transforming-remote-collaboration:-a-case-study-in-virtual-reality-at-xyz-corporation",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " case study",
+      " productivity",
+      " innovation",
+      " remote teams."
+    ],
+    "views": 41,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzg1skc001s31p77bbabehc",
+    "title": "Immersive Collaboration: Virtual Reality's Role in Remote Work",
+    "createdAt": "2024-04-14T11:29:49.788Z",
+    "updatedAt": "2024-04-27T06:52:00.231Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_pexels-sound-on-3761267.jpg",
+    "description": "Explore how virtual reality (VR) is reshaping remote work by providing immersive collaboration experiences for distributed teams. Discover the benefits of VR technology in enhancing communication, fostering creativity, and strengthening team cohesion in remote work environments.",
+    "categories": [
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "immersive-collaboration:-virtual-reality's-role-in-remote-work",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " communication",
+      " creativity",
+      " team cohesion",
+      " productivity",
+      " innovation",
+      " remote teams"
+    ],
+    "views": 25,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzfvisx001n31p719mnjnyh",
+    "title": "Virtual Reality in Remote Work: Transforming Collaboration and Connectivity",
+    "createdAt": "2024-04-14T11:24:57.197Z",
+    "updatedAt": "2024-04-14T11:24:57.197Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_pexels-julia-m-cameron-4144039.jpg",
+    "description": "Explore the impact of virtual reality (VR) on remote work, revolutionizing collaboration and connectivity for distributed teams. Discover how VR technology enhances virtual meetings, fosters team cohesion, and empowers remote employees to work together seamlessly.",
+    "categories": [
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdgaut000831p7xy7j5r63",
+        "name": "learning",
+        "slug": "learning",
+        "createdAt": "2024-04-14T10:17:07.830Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "virtual-reality-in-remote-work:-transforming-collaboration-and-connectivity",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " virtual meetings",
+      " team cohesion",
+      " connectivity",
+      " productivity",
+      " innovation",
+      " remote teams."
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzelsse001k31p7h5oypqxh",
+    "title": "Innovating Remote Work: Harnessing the Power of VR Collaboration",
+    "createdAt": "2024-04-14T10:49:23.963Z",
+    "updatedAt": "2024-04-14T10:49:23.963Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_virtual-reality-6845814_640(1).jpg",
+    "description": "Explore how virtual reality (VR) collaboration tools are revolutionizing remote work, enabling teams to collaborate effectively across distances. From immersive virtual meetings to interactive training sessions, discover how VR technology is reshaping the future of work.",
+    "categories": [
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "innovating-remote-work:-harnessing-the-power-of-vr-collaboration",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " virtual meetings",
+      " training",
+      " immersive experiences",
+      " productivity",
+      " innovation",
+      " remote teams."
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzekgcl001h31p7uns3wh4u",
+    "title": "Empowering Remote Teams: The Impact of VR Collaboration Tools",
+    "createdAt": "2024-04-14T10:48:21.186Z",
+    "updatedAt": "2024-04-14T10:48:21.186Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_woman-1845517_640.jpg",
+    "description": "Explore the transformative potential of virtual reality (VR) collaboration tools in empowering remote teams. From immersive virtual meetings to interactive training sessions, discover how VR technology is revolutionizing remote work and collaboration.",
+    "categories": [
+      {
+        "id": "cluzee7rz001e31p7ekffhl8j",
+        "name": "business",
+        "slug": "business",
+        "createdAt": "2024-04-14T10:43:30.144Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "empowering-remote-teams:-the-impact-of-vr-collaboration-tools",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " virtual meetings",
+      " training",
+      " immersive experiences",
+      " productivity",
+      " innovation",
+      " remote teams."
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzeetwr001f31p774bx7yze",
+    "title": "The Role of VR in Remote Work and Collaboration",
+    "createdAt": "2024-04-14T10:43:58.826Z",
+    "updatedAt": "2024-04-14T10:43:58.826Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_rainbow-7679604_640.jpg",
+    "description": "Explore how virtual reality (VR) is reshaping remote work and collaboration, offering immersive environments for team meetings, training sessions, and collaborative projects. Discover the benefits and challenges of incorporating VR into modern workplaces",
+    "categories": [
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "the-role-of-vr-in-remote-work-and-collaboration",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " remote work",
+      " collaboration",
+      " technology",
+      " business",
+      " virtual meetings",
+      " training",
+      " virtual collaboration spaces",
+      " employee onboarding",
+      " immersive experiences",
+      " productivity",
+      " innovation",
+      " remote teams."
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzeb8kn001931p7vvla38b8",
+    "title": "Unlocking the Potential: Virtual Reality and Mental Health",
+    "createdAt": "2024-04-14T10:41:11.206Z",
+    "updatedAt": "2024-04-14T10:41:11.206Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_metaverse-7828306_640.jpg",
+    "description": "Dive into the transformative potential of virtual reality (VR) in addressing mental health challenges. Discover how VR technology is revolutionizing therapy, mindfulness, and self-care practices, offering new avenues for healing and well-being.",
+    "categories": [
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdgaut000831p7xy7j5r63",
+        "name": "learning",
+        "slug": "learning",
+        "createdAt": "2024-04-14T10:17:07.830Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdnaoe000o31p7ksymrhcn",
+        "name": "healthcare",
+        "slug": "healthcare",
+        "createdAt": "2024-04-14T10:22:34.191Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "unlocking-the-potential:-virtual-reality-and-mental-health",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " mental health",
+      " therapy",
+      " mindfulness",
+      " well-being",
+      " technology",
+      " innovation"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluze84cb001631p7mqbudmr1",
+    "title": "Exploring Virtual Reality Museums and Art Galleries: A Journey Through Immersive Creativity",
+    "createdAt": "2024-04-14T10:38:45.755Z",
+    "updatedAt": "2024-04-29T03:59:25.221Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_vr-3559837_640.jpg",
+    "description": "Embark on a captivating exploration of virtual reality (VR) museums and art galleries, where art comes to life in immersive digital landscapes. Experience the fusion of technology and creativity as we delve into interactive exhibitions, digital masterpieces, and the boundless possibilities of VR art.",
+    "categories": [
+      {
+        "id": "cluze056m001131p7t3zyc4ud",
+        "name": "art",
+        "slug": "art",
+        "createdAt": "2024-04-14T10:32:33.598Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "exploring-virtual-reality-museums-and-art-galleries:-a-journey-through-immersive-creativity",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " museums",
+      " art galleries",
+      " digital art",
+      " immersive experiences",
+      " technology",
+      " creativity"
+    ],
+    "views": 1,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluze1qjk001231p7d305d4f5",
+    "title": "Unveiling the Virtual Canvas: VR Museums and Art Galleries Redefine the Art Experience",
+    "createdAt": "2024-04-14T10:33:47.936Z",
+    "updatedAt": "2024-04-14T10:33:47.936Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_vr-3559839_640.jpg",
+    "description": "Immerse yourself in a groundbreaking exploration of virtual reality (VR) museums and art galleries, where art transcends the confines of physical space and time. Experience the fusion of technology and creativity as we delve into the innovative world of VR art exhibitions, interactive installations, and digital masterpieces.",
+    "categories": [
+      {
+        "id": "cluzdgaut000831p7xy7j5r63",
+        "name": "learning",
+        "slug": "learning",
+        "createdAt": "2024-04-14T10:17:07.830Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluze056m001131p7t3zyc4ud",
+        "name": "art",
+        "slug": "art",
+        "createdAt": "2024-04-14T10:32:33.598Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "unveiling-the-virtual-canvas:-vr-museums-and-art-galleries-redefine-the-art-experience",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " museums",
+      " art galleries",
+      " digital art",
+      " immersive experiences",
+      " technology",
+      " creativity"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdy9pj000x31p76v65i08g",
+    "title": "The Rise of Virtual Reality Fitness Programs",
+    "createdAt": "2024-04-14T10:31:06.151Z",
+    "updatedAt": "2024-04-14T10:31:06.151Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_virtual-reality-6845814_640.jpg",
+    "description": "Explore the growing trend of virtual reality (VR) fitness programs and how they are revolutionizing the way people exercise. From immersive workouts to gamified fitness experiences, discover how VR is reshaping the fitness industry and motivating users to achieve their health and wellness goals like never before",
+    "categories": [
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdx002000w31p7joi7a22q",
+        "name": "fitness",
+        "slug": "fitness",
+        "createdAt": "2024-04-14T10:30:06.914Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "the-rise-of-virtual-reality-fitness-programs",
+    "tags": [
+      " vr",
+      " virtual reality",
+      " fitness",
+      " exercise",
+      " wellness",
+      " technology",
+      " gamification"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdvft2000t31p7vybp3zcp",
+    "title": "AR in Advertising: Engaging Consumers Like Never Before",
+    "createdAt": "2024-04-14T10:28:54.086Z",
+    "updatedAt": "2024-04-27T06:25:44.194Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_ai-generated-8445846_640.png",
+    "description": "Explore the exciting possibilities of augmented reality (AR) in advertising and how it's transforming consumer engagement. From interactive product experiences to immersive brand storytelling, discover how AR is revolutionizing advertising campaigns and captivating audiences like never before.",
+    "categories": [
+      {
+        "id": "cluzdq39r000s31p7yhpbc4my",
+        "name": "advertising",
+        "slug": "advertising",
+        "createdAt": "2024-04-14T10:24:44.559Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "ar-in-advertising:-engaging-consumers-like-never-before",
+    "tags": [
+      "ar",
+      " augmented reality",
+      " advertising",
+      " marketing",
+      " consumer engagement",
+      " innovation"
+    ],
+    "views": 30,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdp246000p31p7003pcmy6",
+    "title": "How VR is Changing the Healthcare Industry",
+    "createdAt": "2024-04-14T10:23:56.406Z",
+    "updatedAt": "2024-04-14T10:23:56.406Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_virtual-reality-7499161_640.jpg",
+    "description": "Discover the groundbreaking ways in which virtual reality (VR) technology is transforming the healthcare landscape. From pain management to medical training, explore the innovative applications of VR that are revolutionizing patient care and medical practices.",
+    "categories": [
+      {
+        "id": "cluzdnaoe000o31p7ksymrhcn",
+        "name": "healthcare",
+        "slug": "healthcare",
+        "createdAt": "2024-04-14T10:22:34.191Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "how-vr-is-changing-the-healthcare-industry",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " healthcare",
+      " medical technology",
+      " patient care",
+      " innovation"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdmikr000k31p7q9wf83n5",
+    "title": "The Impact of AR on Travel and Tourism",
+    "createdAt": "2024-04-14T10:21:57.771Z",
+    "updatedAt": "2024-04-14T10:21:57.771Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_augmented-reality-1853592_640.jpg",
+    "description": "Explore the transformative effects of augmented reality (AR) on the travel and tourism industry. From enhancing sightseeing experiences to revolutionizing travel planning, discover how AR technology is reshaping the way we explore the world.",
+    "categories": [
+      {
+        "id": "cluzdgaut000831p7xy7j5r63",
+        "name": "learning",
+        "slug": "learning",
+        "createdAt": "2024-04-14T10:17:07.830Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      },
+      {
+        "id": "cluzdl052000j31p7t82vnhjo",
+        "name": "travel",
+        "slug": "travel",
+        "createdAt": "2024-04-14T10:20:47.223Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "the-impact-of-ar-on-travel-and-tourism",
+    "tags": [
+      "ar",
+      " augmented reality",
+      " travel",
+      " tourism",
+      " sightseeing",
+      " technology",
+      " innovation"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdkcv9000f31p7snlll615",
+    "title": "Exploring the Future of VR Shopping",
+    "createdAt": "2024-04-14T10:20:17.061Z",
+    "updatedAt": "2024-04-14T10:20:17.061Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_laptop-2411303_640.jpg",
+    "description": "Step into the future of retail with virtual reality (VR) shopping. Discover how VR technology is revolutionizing the way we shop, from immersive virtual stores to personalized shopping experiences, and explore the potential impact on the future of retail.",
+    "categories": [
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdiotk000e31p7rpqr54gk",
+        "name": "retail",
+        "slug": "retail",
+        "createdAt": "2024-04-14T10:18:59.240Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdilbl000d31p771devdy4",
+        "name": "technology",
+        "slug": "technology",
+        "createdAt": "2024-04-14T10:18:54.706Z",
+        "updatedAt": "2024-04-27T06:07:43.571Z",
+        "showInHome": false
+      }
+    ],
+    "slug": "exploring-the-future-of-vr-shopping",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " shopping",
+      " retail",
+      " e-commerce",
+      " innovation",
+      " technology"
+    ],
+    "views": 0,
+    "author": { "name": "Ayush" }
+  },
+  {
+    "id": "cluzdhp5g000931p7md4g5v52",
+    "title": "5 Ways VR is Revolutionizing Education",
+    "createdAt": "2024-04-14T10:18:13.012Z",
+    "updatedAt": "2024-04-14T12:21:29.134Z",
+    "status": "published",
+    "banner": "https://aonix-admin.s3.ap-south-1.amazonaws.com/compress/compressed_chinese-new-year-8573230_640.jpg",
+    "description": "Dive into the exciting world of virtual reality and its transformative impact on education. Discover how VR technology is reshaping traditional learning experiences and opening up new possibilities for students and educators alike.",
+    "categories": [
+      {
+        "id": "cluzdfu7h000631p7tex3gvh0",
+        "name": "edutech",
+        "slug": "edutech",
+        "createdAt": "2024-04-14T10:16:46.253Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdg3qw000731p7o23uy3s0",
+        "name": "virtual reality",
+        "slug": "virtual-reality",
+        "createdAt": "2024-04-14T10:16:58.617Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": false
+      },
+      {
+        "id": "cluzdgaut000831p7xy7j5r63",
+        "name": "learning",
+        "slug": "learning",
+        "createdAt": "2024-04-14T10:17:07.830Z",
+        "updatedAt": "2024-04-19T14:53:42.680Z",
+        "showInHome": true
+      }
+    ],
+    "slug": "5-ways-vr-is-revolutionizing-education",
+    "tags": [
+      "vr",
+      " virtual reality",
+      " education",
+      " immersive learning",
+      " technology",
+      " innovation"
+    ],
+    "views": 9,
+    "author": { "name": "Ayush" }
+  }
+]
