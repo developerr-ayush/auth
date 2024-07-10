@@ -109,7 +109,7 @@ export const getBlogById = async (id: string) => {
   try {
     const blog = await db.blog.findUnique({
       where: { id },
-      include: { author: true, categories: true },
+      include: { author: true, categories: true ,tags:true},
     });
     return blog;
   } catch (error) {

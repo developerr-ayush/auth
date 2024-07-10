@@ -203,7 +203,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                 form.setValue("status", blog.status || "draft")
                 form.setValue("banner", blog.banner || "")
                 form.setValue("slug", blog.slug || "")
-                form.setValue("tags", blog.tags || [])
+                form.setValue("tags", blog.tags ? blog.tags.map(b => b.id) : [])
                 form.setValue("categories", blog.categories ? blog.categories.map(b => b.id) : []) // Fix the error by mapping the categories array
                 setBlog(blog)
             }
