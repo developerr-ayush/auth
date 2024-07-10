@@ -45,7 +45,7 @@ export const LoginForm = () => {
         })
     }
     return (
-        <CardWrapper headerLabel="Welcome to schoolVR Admin" backButtonHref="/auth/register" backButtonLabel="Don't have an account?" >
+        <CardWrapper headerLabel="Welcome to ayva hub Admin" backButtonHref="/auth/register" backButtonLabel="Don't have an account?" >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-4">

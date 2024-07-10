@@ -15,7 +15,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-[#373A3A]">
       <div className="space-y-6 text-center">
         <h1 className={cn("text-6xl font-semibold  drop-shadow-md", font.className)}>
-          <Image width={300} src={logo} alt="schoolvr" className="" />
+          <Image width={300} src={logo} alt="ayva hub" className="" />
         </h1>
         <p className="text-white tex-lg">A simple admin panel Service</p>
         <div>

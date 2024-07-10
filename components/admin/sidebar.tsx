@@ -59,7 +59,7 @@ export const Sidebar = ({ user }: { user: User }) => {
             }}>
                 <IoMdMenu size={30} />
             </button>
-            <p className='text-xl text-center p-2'><Image width={300} src={logo} alt="schoolvr logo" className="filter invert brightness-0" /></p>
+            <p className='text-xl text-center p-2'><Image width={300} src={logo} alt="ayva hub logo" className="filter invert brightness-0" /></p>
             <nav className='p-3'>
                 <ul className='list-none p-0 text-white'>
                     {sidebar.map((item) => (
