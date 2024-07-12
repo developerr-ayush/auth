@@ -26,7 +26,10 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
             values.tags.map((tag) => {
               return {
                 where: { name: tag },
-                create: { name: tag, slug: tag.toLowerCase().replace(/ /g, "-") },
+                create: {
+                  name: tag,
+                  slug: tag.toLowerCase().replace(/ /g, "-"),
+                },
               };
             }),
         },
@@ -89,7 +92,16 @@ export const updateBlog = async (
       description,
       status,
       banner,
-      tags: { set: tags ? tags.map((tag) => ({ name: tag })) : [] },
+      tags: {
+        connectOrCreate:
+          values.tags &&
+          values.tags.map((tag) => {
+            return {
+              where: { name: tag },
+              create: { name: tag, slug: tag.toLowerCase().replace(/ /g, "-") },
+            };
+          }),
+      },
       slug: slug,
       categories: {
         connectOrCreate: categories.map((cat) => {
