@@ -44,6 +44,7 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
         },
       },
     });
+    console.log("blog", blog);
   } catch (e: any) {
     console.log(e);
     // checking if error is because of title
@@ -87,7 +88,7 @@ export const updateBlog = async (
       description,
       status,
       banner,
-      tags: { set: tags ? tags.map(tag => ({ name: tag })) : [] },
+      tags: { set: tags ? tags.map((tag) => ({ name: tag })) : [] },
       slug: slug,
       categories: {
         connectOrCreate: categories.map((cat) => {
@@ -109,7 +110,7 @@ export const getBlogById = async (id: string) => {
   try {
     const blog = await db.blog.findUnique({
       where: { id },
-      include: { author: true, categories: true ,tags:true},
+      include: { author: true, categories: true, tags: true },
     });
     return blog;
   } catch (error) {

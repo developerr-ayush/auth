@@ -46,8 +46,8 @@ model category {
 
 model tags {
   id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String   @unique
+  name      String
+  slug      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   blogs     Blog[]
