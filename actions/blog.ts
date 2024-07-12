@@ -20,19 +20,7 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
         description,
         status,
         banner,
-        tags: {
-          connectOrCreate:
-            values.tags &&
-            values.tags.map((tag) => {
-              return {
-                where: { name: tag },
-                create: {
-                  name: tag,
-                  slug: tag.toLowerCase().replace(/ /g, "-"),
-                },
-              };
-            }),
-        },
+        tags: values.tags ? values.tags.toString() : "",
         slug: values.slug,
         categories: {
           connectOrCreate: categories.map((cat) => {
@@ -92,16 +80,7 @@ export const updateBlog = async (
       description,
       status,
       banner,
-      tags: {
-        connectOrCreate:
-          values.tags &&
-          values.tags.map((tag) => {
-            return {
-              where: { name: tag },
-              create: { name: tag, slug: tag.toLowerCase().replace(/ /g, "-") },
-            };
-          }),
-      },
+      tags: values.tags ? values.tags.toString() : "",
       slug: slug,
       categories: {
         connectOrCreate: categories.map((cat) => {
@@ -123,7 +102,7 @@ export const getBlogById = async (id: string) => {
   try {
     const blog = await db.blog.findUnique({
       where: { id },
-      include: { author: true, categories: true, tags: true },
+      include: { author: true, categories: true },
     });
     return blog;
   } catch (error) {

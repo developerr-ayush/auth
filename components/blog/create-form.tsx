@@ -87,7 +87,7 @@ export const CreateForm = () => {
             date: new Date(Date.now()),
             banner: "",
             categories: [],
-            tags: []
+            tags: ""
         },
     })
     const handleUpload = async (file: File) => {
@@ -301,9 +301,7 @@ export const CreateForm = () => {
                                     <FormLabel>Tags</FormLabel>
                                     <FormControl>
                                         <Input disabled={isPending}
-                                            value={field?.value ? field?.value?.join(",") : ""} onChange={e => {
-                                                field.onChange(e.target.value.toLowerCase().split(","))
-                                            }} placeholder="Tags seperated with Commas" />
+                                            value={field?.value} placeholder="Tags seperated with Commas" />
                                     </FormControl>
                                     <FormMessage />
                                     <div className="showTags">
@@ -311,7 +309,7 @@ export const CreateForm = () => {
                                             listStyle: "none",
                                             padding: "0",
                                         }}>
-                                            {field && field?.value?.map((tag, index) => (
+                                            {field && field?.value?.split(",")?.map((tag, index) => (
                                                 <li key={index} className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700">
                                                     {tag}
                                                 </li>

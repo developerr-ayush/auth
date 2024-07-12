@@ -94,7 +94,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
             banner: "",
             date: new Date(Date.now()),
             slug: "",
-            tags: [],
+            tags: "",
             categories: [],
         }
     })
@@ -203,7 +203,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                 form.setValue("status", blog.status || "draft")
                 form.setValue("banner", blog.banner || "")
                 form.setValue("slug", blog.slug || "")
-                form.setValue("tags", blog.tags ? blog.tags.map(b => b.name) : [])
+                form.setValue("tags", blog.tags || "")
                 form.setValue("categories", blog.categories ? blog.categories.map(b => b.id) : []) // Fix the error by mapping the categories array
                 setBlog(blog)
             }
@@ -357,9 +357,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                                     <FormLabel>Tags</FormLabel>
                                     <FormControl>
                                         <Input disabled={isPending}
-                                            value={field?.value ? field?.value?.join(",") : ""} onChange={e => {
-                                                field.onChange(e.target.value.toLowerCase().split(","))
-                                            }} placeholder="Tags seperated with Commas" />
+                                            value={field?.value} placeholder="Tags seperated with Commas" />
                                     </FormControl>
                                     <FormMessage />
                                     <div className="showTags">
@@ -367,7 +365,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                                             listStyle: "none",
                                             padding: "0",
                                         }}>
-                                            {field && field?.value?.map((tag, index) => (
+                                            {field && field?.value?.split(",").map((tag, index) => (
                                                 <li key={index} className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700">
                                                     {tag}
                                                 </li>

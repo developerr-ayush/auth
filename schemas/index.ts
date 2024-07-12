@@ -31,6 +31,6 @@ export const blogSchema = z.object({
     .union([z.literal("draft"), z.literal("published"), z.literal("archived")])
     .optional(),
   slug: z.string(),
-  tags: z.array(z.string()).optional(),
+  tags: z.string().optional(),
   categories: z.array(z.string()),
 });

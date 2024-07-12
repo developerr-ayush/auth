@@ -44,15 +44,6 @@ model category {
   blogs      Blog[]
 }
 
-model tags {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  blogs     Blog[]
-}
-
 model Blog {
   id          String     @id @default(cuid())
   title       String?    @unique @db.VarChar(255)
@@ -67,7 +58,7 @@ model Blog {
   categories  category[]
   slug        String?    @unique
   views       Int        @default(0)
-  tags        tags[]
+  tags        String? 
 }
 
 enum Status {
