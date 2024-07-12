@@ -44,7 +44,7 @@ model category {
   blogs      Blog[]
 }
 
-model tags {
+model tags {  
   id        String   @id @default(cuid())
   name      String
   slug      String

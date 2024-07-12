@@ -44,7 +44,6 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
         },
       },
     });
-    console.log("blog", blog);
   } catch (e: any) {
     console.log(e);
     // checking if error is because of title
