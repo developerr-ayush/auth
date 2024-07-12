@@ -21,12 +21,14 @@ export const createBlog = async (values: z.infer<typeof blogSchema>) => {
         status,
         banner,
         tags: {
-          create: values.tags
-            ? values.tags.map((tag) => ({
-                name: tag,
-                slug: tag.toLowerCase().replace(/ /g, "-"),
-              }))
-            : [],
+          connectOrCreate:
+            values.tags &&
+            values.tags.map((tag) => {
+              return {
+                where: { name: tag },
+                create: { name: tag, slug: tag.toLowerCase().replace(/ /g, "-") },
+              };
+            }),
         },
         slug: values.slug,
         categories: {
