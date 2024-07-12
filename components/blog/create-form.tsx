@@ -301,7 +301,9 @@ export const CreateForm = () => {
                                     <FormLabel>Tags</FormLabel>
                                     <FormControl>
                                         <Input disabled={isPending}
-                                            value={field?.value} placeholder="Tags seperated with Commas" />
+                                            {...field} onChange={(e) => {
+                                                field.onChange(e)
+                                            }} placeholder="Tags seperated with Commas" />
                                     </FormControl>
                                     <FormMessage />
                                     <div className="showTags">
