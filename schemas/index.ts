@@ -16,14 +16,17 @@ export const RegisterSchema = z.object({
   }),
 });
 export const blogSchema = z.object({
-  title: z.string().min(10, { message: "Title should be atleast 10 letters" }),
+  title: z
+    .string()
+    .min(10, { message: "Title should be atleast 10 letters" })
+    .max(255, { message: "Title should be less than 255 letters" }),
   content: z
     .string()
-    .min(20, { message: "Description should be atleast 30 letters" }),
+    .min(20, { message: "Description should be atleast 20 letters" }),
   date: z.date(),
   author: z.string().optional(),
   banner: z.string(),
-  description: z.string().optional(),
+  description: z.string().max(1000).optional(),
   status: z
     .union([z.literal("draft"), z.literal("published"), z.literal("archived")])
     .optional(),
