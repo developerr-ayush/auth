@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const search = req.nextUrl.searchParams.get("search");
   const trending = req.nextUrl.searchParams.get("trending");
   const yearmonth = req.nextUrl.searchParams.get("yearmonth"); // 2022-01
-  const pageSize = 6;
+  const pageSize = 10;
   let page = parseInt(p ?? "1");
   const offset = (page - 1) * pageSize;
   let session = await auth();
