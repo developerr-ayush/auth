@@ -37,7 +37,7 @@ import Image from 'next/image'
 import { CategoryDialog } from './category-dialog'
 import { IoClose } from 'react-icons/io5'
 
-const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
+const JoditEditor = dynamic(() => import('jodit-pro-react'), { ssr: false });
 
 export const UpdateForm = ({ id }: { id: string }) => {
     const router = useRouter()
@@ -53,7 +53,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
     const config = useMemo(() => ({
         readonly: false,
         // enable heading tag
-        buttons: ["bold", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
+        buttons: ["bold", "pasteCode", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
         toolbarAdaptive: false,
         enableDragAndDropFileToEditor: true,
 

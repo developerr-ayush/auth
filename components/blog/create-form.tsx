@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form"
 import { blogSchema } from '@/schemas'
 import dynamic from 'next/dynamic'
 // import { createBlog } from '@/actions/blog'
-const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
+const JoditEditor = dynamic(() => import('jodit-pro-react'), { ssr: false });
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
 import {
@@ -46,7 +46,11 @@ export const CreateForm = () => {
     const [isCatUpdata, setIsCatUpdate] = useState(false)
     const config = useMemo(() => ({
         readonly: false,
-        buttons: ["bold", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
+        buttons: ["bold","pasteCode", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
+        extraPlugins: ['pasteCode'],
+        pasteCode: {
+			globalHighlightLib: true
+		},
         toolbarAdaptive: false,
         enableDragAndDropFileToEditor: false,
         uploader: {
