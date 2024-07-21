@@ -39,6 +39,8 @@ import { IoClose } from 'react-icons/io5'
 
 const JoditEditor = dynamic(() => import('jodit-pro-react'), { ssr: false });
 
+// const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
+
 export const UpdateForm = ({ id }: { id: string }) => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(true)

@@ -19,6 +19,7 @@ import { blogSchema } from '@/schemas'
 import dynamic from 'next/dynamic'
 // import { createBlog } from '@/actions/blog'
 const JoditEditor = dynamic(() => import('jodit-pro-react'), { ssr: false });
+// const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
 import {
