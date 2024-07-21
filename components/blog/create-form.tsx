@@ -224,7 +224,7 @@ export const CreateForm = () => {
                                     <FormLabel>Content</FormLabel>
                                     <FormControl>
                                         {/* SOME EDITOR */}
-                                        <JoditEditor value={field.value} onChange={field.onChange} config={config}></JoditEditor>
+                                        <JoditEditor value={field.value} onBlur={field.onChange} config={config}></JoditEditor>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

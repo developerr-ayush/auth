@@ -271,7 +271,7 @@ export const UpdateForm = ({ id }: { id: string }) => {
                                 <FormItem>
                                     <FormLabel>Content</FormLabel>
                                     <FormControl>
-                                        <JoditEditor value={field.value} onChange={field.onChange} config={config}></JoditEditor>
+                                        <JoditEditor value={field.value} onBlur={field.onChange} config={config}></JoditEditor>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
