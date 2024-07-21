@@ -46,11 +46,8 @@ export const CreateForm = () => {
     const [isCatUpdata, setIsCatUpdate] = useState(false)
     const config = useMemo(() => ({
         readonly: false,
-        buttons: ["bold","pasteCode", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
+        buttons: ["bold", "pasteCode", "italic", "underline", "font", "fontsize", "ul", "ol", "indent", "outdent", "link", "image", "video", "table", "hr", "eraser", "source", "fullsize", "preview", "undo", "redo", "cut", "copy", "paste", "selectAll", "about"],
         extraPlugins: ['pasteCode'],
-        pasteCode: {
-			globalHighlightLib: true
-		},
         toolbarAdaptive: false,
         enableDragAndDropFileToEditor: false,
         uploader: {
