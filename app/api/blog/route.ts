@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const trending = req.nextUrl.searchParams.get("trending");
   const yearmonth = req.nextUrl.searchParams.get("yearmonth"); // 2022-01
   const pageSize = 10;
-  let page = parseInt(p ?? "1");
+  let page = parseInt(p ?? "0");
   const offset = (page - 1) * pageSize;
   let session = await auth();
   let query: any = {
@@ -18,24 +18,18 @@ export async function GET(req: NextRequest) {
     select: {
       id: true,
       title: true,
-      createdAt: true,
       updatedAt: true,
-      status: true,
       banner: true,
       description: true,
       categories: true,
       slug: true,
-      tags: true,
       views: true,
-      author: {
-        select: {
-          name: true,
-        },
-      },
     },
-    take: pageSize,
-    skip: offset,
   };
+  if (!!page) {
+    query.take = pageSize;
+    query.skip = offset;
+  }
   if (search) {
     query.where = {
       OR: [
