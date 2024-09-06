@@ -18,6 +18,8 @@ export async function GET(req: NextRequest) {
     select: {
       id: true,
       updatedAt: true,
+      title: true,
+      banner: true,
       description: true,
       categories: true,
       slug: true,
