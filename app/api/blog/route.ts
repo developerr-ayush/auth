@@ -24,6 +24,8 @@ export async function GET(req: NextRequest) {
       categories: true,
       slug: true,
       views: true,
+      status: true,
+      author: true,
     },
   };
   if (!!page) {

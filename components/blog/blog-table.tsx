@@ -17,6 +17,7 @@ export const BlogTable = () => {
         }
         getData()
     }, [])
+    console.log(data)
     if (pending) {
         return (
             <p>Loading Data..</p>
