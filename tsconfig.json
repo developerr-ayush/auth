@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(protected)/twitter/day-update/route.js", "app/(protected)/twitter/query-tweet/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(protected)/twitter/day-update/route.js", "app/(protected)/twitter/query-tweet/route.js", "app/api/cron/scheduled-tweets/route.js"],
   "exclude": ["node_modules"]
 }
