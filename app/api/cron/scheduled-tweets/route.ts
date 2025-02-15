@@ -1,18 +1,10 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import { TwitterApi } from "twitter-api-v2";
 
 export const runtime = 'edge';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
-
-const twitterClient = new TwitterApi({
-  appKey: process.env.DEV_API_KEY,
-  appSecret: process.env.DEV_API_SECRET,
-  accessToken: process.env.DEV_ACCESS_TOKEN,
-  accessSecret: process.env.DEV_ACCESS_SECRET,
 });
 
 async function generateTweetContent(timeOfDay: string) {
@@ -31,6 +23,31 @@ async function generateTweetContent(timeOfDay: string) {
   return response.choices[0].message.content;
 }
 
+async function postTweet(content: string) {
+  const twitterApiUrl = 'https://api.twitter.com/2/tweets';
+  const bearerToken = process.env.TWITTER_BEARER_TOKEN;
+
+  try {
+    const response = await fetch(twitterApiUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${bearerToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: content }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Twitter API error: ${response.status} ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error posting tweet:', error);
+    throw error;
+  }
+}
+
 async function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -44,10 +61,11 @@ export async function GET(req: Request) {
       const tweetContent = await generateTweetContent(timeOfDay);
       
       if (tweetContent) {
-        await twitterClient.v2.tweet(tweetContent);
+        const tweetResponse = await postTweet(tweetContent);
         results.push({
           timeOfDay,
           content: tweetContent,
+          tweetId: tweetResponse.data.id,
         });
         
         // Add a 5-minute delay between tweets to avoid rate limits
